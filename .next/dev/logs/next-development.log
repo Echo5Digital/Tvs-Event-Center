@@ -78,3 +78,10 @@
 [00:19:56.290] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 404
 [00:19:56.300] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
 [00:20:00.692] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:23:34.834] Server  LOG      ✓ Compiled in 546ms
+[00:24:16.449] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:24:30.008] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:24:30.673] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:24:46.024] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:24:46.036] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:24:46.361] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404

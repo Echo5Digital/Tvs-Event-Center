@@ -56,13 +56,24 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-medium transition-colors duration-300 hover:text-gold-500 ${
-                  pathname === link.href
-                    ? 'text-gold-600'
-                    : isScrolled
+                className={`font-medium transition-colors duration-300 ${
+                  isScrolled
                     ? 'text-gray-700'
                     : 'text-white'
                 }`}
+                style={{
+                  color: pathname === link.href ? '#b45309' : undefined
+                }}
+                onMouseEnter={(e) => {
+                  if (pathname !== link.href) {
+                    e.target.style.color = '#d97b15'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (pathname !== link.href) {
+                    e.target.style.color = ''
+                  }
+                }}
               >
                 {link.label}
               </Link>
@@ -74,7 +85,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-2 text-sm">
               <Phone className="w-4 h-4" />
               <span className={isScrolled ? 'text-gray-700' : 'text-white'}>
-                +1 (555) 123-4567
+                +1 (555) 555-5555
               </span>
             </div>
             <Link
@@ -114,11 +125,20 @@ const Navbar = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`block py-2 font-medium transition-colors duration-300 hover:text-gold-500 ${
-                      pathname === link.href
-                        ? 'text-gold-600'
-                        : 'text-gray-700'
-                    }`}
+                    className="block py-2 font-medium transition-colors duration-300 text-gray-700"
+                    style={{
+                      color: pathname === link.href ? '#b45309' : undefined
+                    }}
+                    onMouseEnter={(e) => {
+                      if (pathname !== link.href) {
+                        e.target.style.color = '#d97b15'
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (pathname !== link.href) {
+                        e.target.style.color = '#374151'
+                      }
+                    }}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.label}
@@ -127,7 +147,7 @@ const Navbar = () => {
                 <div className="border-t border-gray-200 pt-4 space-y-3">
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Phone className="w-4 h-4" />
-                    <span>+1 (555) 123-4567</span>
+                    <span>+1 (555) 555-5555</span>
                   </div>
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Mail className="w-4 h-4" />

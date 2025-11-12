@@ -311,7 +311,7 @@ export default function HomePage() {
                   href="tel:+15551234567"
                   className="border-2 border-white text-white hover:bg-white hover:text-gold-600 font-semibold px-8 py-4 rounded-lg transition-all duration-300"
                 >
-                  Call Now: +1 (555) 123-4567
+                  Call Now: +1 (555) 555-555
                 </Link>
               </div>
             </motion.div>

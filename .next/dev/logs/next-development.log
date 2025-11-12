@@ -1,19 +1,202 @@
-[00:00:01.427] Server  LOG      ✓ Ready in 925ms
-[00:00:47.569] Server  LOG      ○ Compiling /services ...
-[00:00:50.151] Browser WARN    Image with src "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:51.638] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:51.815] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 404
-[00:00:53.946] Browser WARN    Image with src "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:53.946] Browser WARN    Image with src "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:53.946] Browser WARN    Image with src "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:54.054] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
-[00:00:56.922] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:00:56.922] Browser WARN    Image with src "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:57.407] Browser WARN    Image with src "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:00:59.531] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
-[00:01:03.167] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
-[00:01:03.201] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
-[00:01:20.601] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
-[00:01:20.762] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
-[00:42:37.659] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 404
-[00:42:37.777] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:00:01.441] Server  LOG      ✓ Ready in 938ms
+[00:00:04.462] Server  LOG      ○ Compiling / ...
+[00:00:06.143] Server  WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:00:06.731] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.928] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:00:13.560] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:00:18.564] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:00:32.303] Browser WARN    Image with src "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:32.552] Browser WARN    Image with src "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:32.553] Browser WARN    Image with src "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:32.572] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:00:37.883] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:38.034] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:00:42.042] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:42.185] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:00:48.812] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:00:52.709] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:00.891] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:01:01.028] Browser WARN    Image with src "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:01.028] Browser WARN    Image with src "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:01.028] Browser WARN    Image with src "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:08.062] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:01:10.605] Browser WARN    Image with src "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:08.494] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:08.512] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:05:08.848] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:05:08.848] Browser WARN    Image with src "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:08.848] Browser WARN    Image with src "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:08.848] Browser WARN    Image with src "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:08.848] Browser WARN    Image with src "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:08.848] Browser WARN    Image with src "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:15.198] Browser WARN    Image with src "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:15.311] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:05:17.377] Server  LOG      ✓ Compiled in 734ms
+[00:05:18.735] Browser WARN    Image with src "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:18.735] Browser WARN    Image with src "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:19.081] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:05:19.300] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:05:20.314] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:05:21.341] Browser WARN    Image with src "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:21.342] Browser WARN    Image with src "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:05:21.374] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 404
+[00:06:12.519] Server  LOG      ✓ Compiled in 203ms
+[00:06:26.765] Server  WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:06:27.400] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:27.691] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 404
+[00:06:27.712] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:06:27.720] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:06:27.756] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:06:28.031] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:28.073] Browser WARN    Image with src "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:30.058] Browser WARN    Image with src "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:30.058] Browser WARN    Image with src "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:06:34.546] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:06:39.547] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:06:39.627] Server  LOG      ✓ Compiled in 453ms
+[00:06:41.569] Server  WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:06:41.979] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:06:42.136] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:06:51.625] Server  LOG      ✓ Compiled in 222ms
+[00:07:04.783] Server  LOG      ✓ Compiled in 166ms
+[00:07:17.913] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:07:17.930] Browser WARN    Image with src "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:17.930] Browser WARN    Image with src "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:17.930] Browser WARN    Image with src "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:18.484] Browser WARN    Image with src "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:18.792] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:07:19.944] Browser WARN    Image with src "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:23.784] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:07:28.753] Server  LOG      ✓ Compiled in 289ms
+[00:07:34.235] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:07:34.237] Browser WARN    Image with src "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:34.237] Browser WARN    Image with src "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:34.241] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:07:34.548] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 404
+[00:07:34.624] Browser WARN    Image with src "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:34.624] Browser WARN    Image with src "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:07:58.690] Server  LOG      ✓ Compiled in 241ms
+[00:08:31.948] Server  LOG      ✓ Compiled in 292ms
+[00:08:56.308] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:08:56.573] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:09:16.996] Server  LOG      ✓ Compiled in 1364ms
+[00:10:03.699] Server  LOG      ✓ Compiled in 314ms
+[00:10:27.736] Server  LOG      ✓ Compiled in 154ms
+[00:10:34.809] Server  LOG      ✓ Compiled in 146ms
+[00:10:40.679] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:10:48.136] Server  WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:10:48.595] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:48.745] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:10:51.288] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:10:51.302] Browser WARN    Image with src "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:10:51.302] Browser WARN    Image with src "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:10:51.302] Browser WARN    Image with src "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:10:52.554] Browser WARN    Image with src "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:10:53.455] Browser WARN    Image with src "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:10:55.384] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:10:56.387] Server  LOG      ✓ Compiled in 346ms
+[00:11:00.392] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:11:01.707] Server  LOG      ✓ Compiled in 188ms
+[00:11:16.383] Browser WARN    Image with src "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:16.383] Browser WARN    Image with src "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:16.735] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:11:16.737] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:11:21.906] Browser WARN    Image with src "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:21.906] Browser WARN    Image with src "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:22.075] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" 404
+[00:11:26.561] Server  LOG      ✓ Compiled in 233ms
+[00:11:35.090] Server  LOG      ✓ Compiled in 194ms
+[00:11:48.332] Server  LOG      ✓ Compiled in 253ms
+[00:11:48.440] Browser ERROR   ./src/components/HeroSection.jsx:224:17
+Parsing ecmascript source code failed
+  222 |             <div className="text-center">
+  223 |               <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}
+> 224 |                 24/7
+      |                 ^^
+  225 |               </div>
+  226 |               <div className="text-white/80 text-sm uppercase tracking-wide">
+  227 |                 Event Support
+
+Expected '</', got 'numeric literal (24, 24)'
+
+Import traces:
+  Client Component Browser:
+    ./src/components/HeroSection.jsx [Client Component Browser]
+    ./src/app/page.js [Client Component Browser]
+    ./src/app/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/components/HeroSection.jsx [Client Component SSR]
+    ./src/app/page.js [Client Component SSR]
+    ./src/app/page.js [Server Component]
+[00:12:04.554] Server  LOG      ✓ Compiled in 158ms
+[00:12:16.850] Server  LOG      ✓ Compiled in 182ms
+[00:12:21.152] Server  WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:12:21.850] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:12:28.610] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:12:33.522] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:13:24.198] Server  LOG      ✓ Compiled in 891ms
+[00:13:36.921] Server  LOG      ✓ Compiled in 3.3s
+[00:13:44.515] Server  LOG      ✓ Compiled in 608ms
+[00:13:49.017] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:13:55.649] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:14:00.672] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:15:39.923] Server  LOG      ✓ Compiled in 250ms
+[00:15:44.001] Server  WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:15:44.484] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:15:51.893] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:15:56.156] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:15:59.983] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:00.161] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:16:03.534] Browser WARN    Image with src "https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:16:03.535] Browser WARN    Image with src "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:16:03.535] Browser WARN    Image with src "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:16:04.065] Server  ERROR    ⨯ "upstream image response failed for" "https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 404
+[00:16:06.936] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:16:11.840] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities

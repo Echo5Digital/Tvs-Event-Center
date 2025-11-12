@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,22 +10,38 @@
   }
   
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Playfair Display', serif;
     background-color: #fafafa;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
   }
+  
+  * {
+    font-family: 'Playfair Display', serif;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+    background: linear-gradient(135deg, #d97b15 0%, #b45309 100%);
+    @apply text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #b45309 0%, #92400e 100%);
   }
   
   .btn-secondary {
-    @apply border-2 border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white font-medium px-8 py-3 rounded-lg transition-all duration-300;
+    @apply border-2 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300;
+    border-color: #d97b15;
+    color: #d97b15;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #d97b15;
+    @apply text-white;
   }
   
   .section-padding {
@@ -37,11 +53,28 @@
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #d97b15 0%, #b45309 100%);
+    @apply bg-clip-text text-transparent;
+  }
+  
+  .text-heading {
+    color: #b45309;
+  }
+  
+  .text-accent {
+    color: #d97b15;
   }
   
   .card-hover {
     @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+  }
+  
+  .bg-primary {
+    background: linear-gradient(135deg, #d97b15 0%, #b45309 100%);
+  }
+  
+  .bg-secondary {
+    @apply bg-gradient-to-r from-orange-50 to-amber-50;
   }
 }
 

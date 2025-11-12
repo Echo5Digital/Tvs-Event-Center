@@ -84,8 +84,8 @@ export const companyInfo = {
 
 export const contactInfo = {
   email: 'info@tveventcenter.com',
-  phone: '+1 (555) 123-4567',
-  whatsapp: '+1 (555) 123-4567',
+  phone: '+1 (555) 555-5555',
+  whatsapp: '+1 (555) 555-5555',
   address: {
     street: '123 Event Center Drive',
     city: 'Metropolitan City',

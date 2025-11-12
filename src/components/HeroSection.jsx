@@ -1,23 +1,78 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Play, Calendar, MapPin } from 'lucide-react'
 
 const HeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  
+  const backgroundImages = [
+    '/images/tvevent34.jpg',
+    '/images/tvevent35.jpg',
+    '/images/tvevent36.jpg'
+  ]
+
+  // Auto-change background images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundImages.length
+      )
+    }, 5000) // Change image every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [backgroundImages.length])
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Images with Smooth Transitions */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-          alt="Elegant event hall setup with beautiful lighting and decorations"
-          fill
-          className="object-cover"
-          priority
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImageIndex}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ 
+              duration: 1.5,
+              ease: "easeInOut"
+            }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={backgroundImages[currentImageIndex]}
+              alt={`TV Event Center - Image ${currentImageIndex + 1}`}
+              fill
+              className="object-cover object-center"
+              priority={currentImageIndex === 0}
+              quality={95}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            />
+          </motion.div>
+        </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+        
+        {/* Image Indicators */}
+        <div className="absolute bottom-20 right-8 z-20 flex flex-col space-y-2">
+          {backgroundImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentImageIndex 
+                  ? 'scale-110' 
+                  : 'bg-white/50 hover:bg-white/70'
+              }`}
+              style={{
+                backgroundColor: index === currentImageIndex ? '#d97b15' : undefined
+              }}
+              aria-label={`Switch to image ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Floating Elements */}
@@ -31,7 +86,8 @@ const HeroSection = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-20 right-10 w-20 h-20 bg-gold-500/20 rounded-full blur-xl"
+        className="absolute top-20 right-10 w-20 h-20 rounded-full blur-xl opacity-20"
+        style={{ backgroundColor: '#d97b15' }}
       />
       
       <motion.div
@@ -44,7 +100,8 @@ const HeroSection = () => {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-32 left-10 w-32 h-32 bg-gold-400/10 rounded-full blur-2xl"
+        className="absolute bottom-32 left-10 w-32 h-32 rounded-full blur-2xl opacity-10"
+        style={{ backgroundColor: '#b45309' }}
       />
 
       {/* Content */}
@@ -60,7 +117,8 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-gold-400 font-medium text-lg tracking-wide uppercase"
+            className="font-medium text-lg tracking-wide uppercase"
+            style={{ color: '#d97b15' }}
           >
             TV Event Center
           </motion.p>
@@ -73,7 +131,7 @@ const HeroSection = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight"
           >
             Celebrate Life's{' '}
-            <span className="text-gradient bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent">
+            <span className="text-gradient">
               Best Moments
             </span>
           </motion.h1>
@@ -96,15 +154,15 @@ const HeroSection = () => {
             className="flex flex-wrap justify-center items-center gap-8 text-white/80"
           >
             <div className="flex items-center space-x-2">
-              <MapPin className="w-5 h-5 text-gold-400" />
+              <MapPin className="w-5 h-5" style={{ color: '#d97b15' }} />
               <span>Premium Location</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Calendar className="w-5 h-5 text-gold-400" />
+              <Calendar className="w-5 h-5" style={{ color: '#d97b15' }} />
               <span>1000+ Events Hosted</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Play className="w-5 h-5 text-gold-400" />
+              <Play className="w-5 h-5" style={{ color: '#d97b15' }} />
               <span>Full-Service Planning</span>
             </div>
           </motion.div>
@@ -138,7 +196,7 @@ const HeroSection = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-white/20"
           >
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-gold-400 mb-2">
+              <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}>
                 7,500
               </div>
               <div className="text-white/80 text-sm uppercase tracking-wide">
@@ -146,7 +204,7 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-gold-400 mb-2">
+              <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}>
                 1,000
               </div>
               <div className="text-white/80 text-sm uppercase tracking-wide">
@@ -154,7 +212,7 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-gold-400 mb-2">
+              <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}>
                 10+
               </div>
               <div className="text-white/80 text-sm uppercase tracking-wide">
@@ -162,7 +220,7 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-gold-400 mb-2">
+              <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}>
                 24/7
               </div>
               <div className="text-white/80 text-sm uppercase tracking-wide">
@@ -178,12 +236,18 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
+        onClick={() => {
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+          })
+        }}
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center hover:border-white/80 transition-colors duration-300"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}

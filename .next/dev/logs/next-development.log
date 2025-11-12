@@ -572,3 +572,28 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
 [01:10:58.773] Browser WARN    Image with src "/images/tvevent36.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
 [01:11:03.644] Browser WARN    Image with src "/images/wedding1.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[01:38:01.582] Server  LOG      ✓ Compiled in 299ms
+[01:38:16.708] Server  LOG      ✓ Compiled in 1558ms
+[01:42:48.249] Server  LOG        Reload env: .env.local
+[01:42:48.412] Server  LOG        Reload env: .env.local
+[01:42:49.242] Server  LOG      ✓ Compiled in 669ms
+[01:47:39.772] Server  LOG      ✓ Compiled in 265ms
+[01:47:53.852] Server  LOG      ✓ Compiled in 227ms
+[01:48:01.170] Server  LOG      ✓ Compiled in 194ms
+[01:48:22.610] Server  LOG      ✓ Compiled in 260ms
+[01:48:53.758] Server  LOG      ✓ Compiled in 158ms
+[01:49:12.489] Server  LOG      ✓ Compiled in 222ms
+[01:51:24.503] Server  LOG      ✓ Compiled in 328ms
+[01:56:01.327] Browser ERROR   Form submission error: {}
+[01:56:15.468] Server  ERROR   Supabase error: {}
+[01:56:15.470] Server  ERROR   Error submitting form: {}
+[01:56:15.574] Browser ERROR   Form submission error: {}
+[01:56:24.368] Server  ERROR   Supabase error: {}
+[01:56:24.369] Server  ERROR   Error submitting form: {}
+[01:56:24.478] Browser ERROR   Form submission error: {}
+[01:56:25.598] Server  ERROR   Supabase error: {}
+[01:56:25.599] Server  ERROR   Error submitting form: {}
+[01:56:25.704] Browser ERROR   Form submission error: {}
+[01:56:53.933] Server  ERROR   Supabase error: {}
+[01:56:53.937] Server  ERROR   Error submitting form: {}
+[01:56:54.054] Browser ERROR   Form submission error: {}

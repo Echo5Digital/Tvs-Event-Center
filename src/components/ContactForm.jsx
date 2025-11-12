@@ -12,10 +12,12 @@ const ContactForm = () => {
     eventType: '',
     eventDate: '',
     guestCount: '',
+    budgetRange: '',
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
   const eventTypes = [
     'Wedding',
@@ -26,6 +28,16 @@ const ContactForm = () => {
     'Conference',
     'Product Launch',
     'Other'
+  ]
+
+  const budgetRanges = [
+    'Under $5,000',
+    '$5,000 - $10,000',
+    '$10,000 - $20,000',
+    '$20,000 - $50,000',
+    '$50,000 - $100,000',
+    'Over $100,000',
+    'Prefer not to say'
   ]
 
   const handleInputChange = (e) => {
@@ -39,10 +51,25 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError('')
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+    try {
+      // Submit to our API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit form')
+      }
+
+      // Success - show success message
       setIsSubmitted(true)
       
       // Reset form after 3 seconds
@@ -55,10 +82,17 @@ const ContactForm = () => {
           eventType: '',
           eventDate: '',
           guestCount: '',
+          budgetRange: '',
           message: ''
         })
       }, 3000)
-    }, 2000)
+
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setError(error.message || 'Something went wrong. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -291,6 +325,24 @@ const ContactForm = () => {
             </div>
 
             <div>
+              <label htmlFor="budgetRange" className="block text-sm font-medium text-gray-700 mb-2">
+                Budget Range
+              </label>
+              <select
+                id="budgetRange"
+                name="budgetRange"
+                value={formData.budgetRange}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-300"
+              >
+                <option value="">Select budget range</option>
+                {budgetRanges.map(range => (
+                  <option key={range} value={range}>{range}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                 Message
               </label>
@@ -304,6 +356,12 @@ const ContactForm = () => {
                 placeholder="Tell us more about your event requirements, preferences, or any special requests..."
               />
             </div>
+
+            {error && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+                {error}
+              </div>
+            )}
 
             <motion.button
               type="submit"

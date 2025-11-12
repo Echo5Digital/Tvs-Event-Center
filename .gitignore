@@ -9,3 +9,6 @@ node_modules/
 /next/
 /github/
 .next
+.env.local
+/.next/
+.next/

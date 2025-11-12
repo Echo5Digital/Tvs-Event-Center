@@ -4,14 +4,25 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
+  console.error('Missing Supabase environment variables:', {
+    url: !!supabaseUrl,
+    key: !!supabaseAnonKey
+  })
+  // Don't throw error during build, handle gracefully
+  if (typeof window === 'undefined') {
+    console.warn('Supabase client initialization skipped during build')
+  }
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null
 
 // Helper function to submit contact form
 export async function submitContactForm(formData) {
   try {
+    if (!supabase) {
+      throw new Error('Supabase client not initialized')
+    }
+
     const { data, error } = await supabase
       .from('contact_submissions')
       .insert([
@@ -44,6 +55,10 @@ export async function submitContactForm(formData) {
 // Helper function to get all submissions (for admin)
 export async function getContactSubmissions(filters = {}) {
   try {
+    if (!supabase) {
+      throw new Error('Supabase client not initialized')
+    }
+
     let query = supabase
       .from('contact_submissions')
       .select('*')
@@ -79,6 +94,10 @@ export async function getContactSubmissions(filters = {}) {
 // Helper function to update submission status
 export async function updateSubmissionStatus(id, status) {
   try {
+    if (!supabase) {
+      throw new Error('Supabase client not initialized')
+    }
+
     const { data, error } = await supabase
       .from('contact_submissions')
       .update({ 
@@ -103,6 +122,10 @@ export async function updateSubmissionStatus(id, status) {
 // Helper function to get submission statistics
 export async function getSubmissionStats() {
   try {
+    if (!supabase) {
+      throw new Error('Supabase client not initialized')
+    }
+
     const { data, error } = await supabase
       .from('contact_submissions')
       .select('status, created_at')

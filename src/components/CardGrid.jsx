@@ -78,7 +78,7 @@ const CardGrid = ({ items, type = 'default', className = "" }) => {
         </div>
         
         <Link
-          href={`/services#${service.id}`}
+          href={`/services/${service.slug}`}
           className="inline-flex items-center text-gold-600 hover:text-gold-700 font-medium group"
         >
           Learn More

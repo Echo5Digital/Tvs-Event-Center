@@ -28,8 +28,10 @@ export default function HomePage() {
         {/* Hero Section */}
         <HeroSection />
 
-        {/* Diamond Services Section */}
-        <DiamondServicesSection />
+        {/* Diamond Services Section - Hidden on Mobile */}
+        <div className="hidden md:block">
+          <DiamondServicesSection />
+        </div>
 
         {/* About Preview Section */}
         <section className="section-padding bg-gradient-to-br from-gray-50 to-white">

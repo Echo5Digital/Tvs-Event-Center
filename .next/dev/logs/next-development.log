@@ -391,3 +391,29 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
 [00:36:24.955] Server  LOG      ✓ Compiled in 182ms
 [00:36:33.768] Server  LOG      ✓ Compiled in 199ms
 [00:38:07.110] Server  LOG      ✓ Compiled in 239ms
+[00:41:52.249] Browser WARN    Image with src "/images/tvevent34.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:41:52.249] Browser WARN    Image with src "/images/tvevent35.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:51:39.036] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:51:45.676] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:51:50.663] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:51:58.212] Server  LOG      ✓ Compiled in 1276ms
+[00:52:17.839] Browser WARN    Image with src "/images/wedding1.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:52:24.222] Server  WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:52:25.399] Browser WARN    Image with src "/images/tvevent34.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:52:25.568] Browser WARN    Image with src "/images/tvevent34.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:32.128] Browser WARN    Image with src "/images/tvevent35.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:52:32.385] Browser WARN    Image with src "/images/tvevent35.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:32.386] Browser WARN    Image with src "/images/tvevent35.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:52:37.177] Browser WARN    Image with src "/images/tvevent36.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+[00:52:37.177] Browser WARN    Image with src "/images/tvevent36.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:52:42.075] Browser WARN    Image with src "/images/wedding1.jpg" is using quality "95" which is not configured in images.qualities [75]. Please update your config to [75, 95].
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities

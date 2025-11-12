@@ -12,7 +12,8 @@ const HeroSection = () => {
   const backgroundImages = [
     '/images/tvevent34.jpg',
     '/images/tvevent35.jpg',
-    '/images/tvevent36.jpg'
+    '/images/tvevent36.jpg',
+    '/images/wedding1.jpg'
   ]
 
   // Auto-change background images

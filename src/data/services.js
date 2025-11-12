@@ -45,11 +45,11 @@ export const services = [
         includes: ['Luxury decoration', '8-hour venue', 'Premium catering', 'Complete AV setup', 'Bridal suite', 'Wedding coordination']
       }
     ],
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/tvevent34.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/tvevent34.jpg',
+      '/images/tvevent35.jpg',
+      '/images/tvevent36.jpg'
     ],
     category: 'weddings',
     duration: '4-8 hours',
@@ -101,11 +101,11 @@ export const services = [
         includes: ['Evening venue', 'Premium setup', 'Multi-course dinner', 'Entertainment options', 'Full coordination']
       }
     ],
-    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/tvevent35.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/tvevent35.jpg',
+      '/images/tvevent34.jpg',
+      '/images/tvevent36.jpg'
     ],
     category: 'corporate',
     duration: '2-12 hours', 
@@ -157,11 +157,11 @@ export const services = [
         includes: ['Premium decoration', '6-hour venue', 'Gourmet catering', 'Entertainment', 'Full coordination']
       }
     ],
-    image: 'https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/tvevent36.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/tvevent36.jpg',
+      '/images/tvevent35.jpg',
+      '/images/tvevent34.jpg'
     ],
     category: 'social',
     duration: '3-6 hours',
@@ -213,11 +213,11 @@ export const services = [
         includes: ['Full-day venue', 'Multiple meal services', 'Presentation facilities', 'Entertainment', 'Group coordination']
       }
     ],
-    image: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/images/tvevent34.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1529636798458-92182e662485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/tvevent34.jpg',
+      '/images/tvevent36.jpg',
+      '/images/tvevent35.jpg'
     ],
     category: 'reunion',
     duration: '4-10 hours',

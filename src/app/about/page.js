@@ -104,7 +104,7 @@ export default function AboutPage() {
               >
                 <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src="/images/tvevent35.jpg"
                     alt="Elegant event setup at TV Event Center"
                     fill
                     className="object-cover"
@@ -283,7 +283,7 @@ export default function AboutPage() {
                 className="relative h-96 rounded-2xl overflow-hidden shadow-2xl"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="/images/Professionalimg.jpg"
                   alt="Professional event team at work"
                   fill
                   className="object-cover"

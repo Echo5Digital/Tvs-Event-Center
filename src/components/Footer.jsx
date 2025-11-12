@@ -95,7 +95,7 @@ const Footer = () => {
                 'Corporate Events',
                 'Birthday Parties',
                 'Engagement Ceremonies',
-                'Mehendi Celebrations',
+                'Reunions Celebrations',
                 'Conferences & Seminars'
               ].map((service) => (
                 <li key={service}>

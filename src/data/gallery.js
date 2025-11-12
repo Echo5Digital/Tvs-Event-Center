@@ -1,7 +1,7 @@
 export const galleryImages = [
   {
     id: 1,
-    src: 'https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent34.jpg',
     alt: 'Elegant wedding reception setup with round tables and floral centerpieces',
     category: 'weddings',
     title: 'Wedding Reception',
@@ -9,7 +9,7 @@ export const galleryImages = [
   },
   {
     id: 2,
-    src: 'https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent35.jpg',
     alt: 'Corporate event setup with modern stage and professional lighting',
     category: 'corporate',
     title: 'Corporate Conference',
@@ -17,7 +17,7 @@ export const galleryImages = [
   },
   {
     id: 3,
-    src: 'https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent36.jpg',
     alt: 'Birthday party celebration with colorful decorations and balloons',
     category: 'birthday',
     title: 'Birthday Celebration',
@@ -25,7 +25,7 @@ export const galleryImages = [
   },
   {
     id: 4,
-    src: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent34.jpg',
     alt: 'Beautiful outdoor garden party with string lights and natural setting',
     category: 'outdoor',
     title: 'Garden Party',
@@ -33,7 +33,7 @@ export const galleryImages = [
   },
   {
     id: 5,
-    src: 'https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent35.jpg',
     alt: 'Grand ballroom setup for large wedding with crystal chandeliers',
     category: 'weddings',
     title: 'Grand Wedding',
@@ -41,7 +41,7 @@ export const galleryImages = [
   },
   {
     id: 6,
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent36.jpg',
     alt: 'Product launch event with modern display and branding elements',
     category: 'corporate',
     title: 'Product Launch',
@@ -49,15 +49,15 @@ export const galleryImages = [
   },
   {
     id: 7,
-    src: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    alt: 'Traditional mehendi ceremony with colorful decorations and seating',
-    category: 'mehendi',
-    title: 'Mehendi Ceremony',
+    src: '/images/tvevent34.jpg',
+    alt: 'Traditional Reunions ceremony with colorful decorations and seating',
+    category: 'Reunions',
+    title: 'Reunions ',
     venue: 'Congo Hall'
   },
   {
     id: 8,
-    src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent35.jpg',
     alt: 'Elegant engagement ceremony with romantic lighting and floral arrangements',
     category: 'engagement',
     title: 'Engagement Ceremony',
@@ -65,7 +65,7 @@ export const galleryImages = [
   },
   {
     id: 9,
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent36.jpg',
     alt: 'Religious ceremony setup with traditional elements and seating arrangement',
     category: 'religious',
     title: 'Religious Ceremony',
@@ -73,7 +73,7 @@ export const galleryImages = [
   },
   {
     id: 10,
-    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent34.jpg',
     alt: 'Conference seminar with professional stage and audience seating',
     category: 'corporate',
     title: 'Business Seminar',
@@ -81,7 +81,7 @@ export const galleryImages = [
   },
   {
     id: 11,
-    src: 'https://images.unsplash.com/photo-1558008258-3256797b43f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent35.jpg',
     alt: 'Outdoor wedding ceremony with natural backdrop and elegant setup',
     category: 'weddings',
     title: 'Outdoor Wedding',
@@ -89,7 +89,7 @@ export const galleryImages = [
   },
   {
     id: 12,
-    src: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    src: '/images/tvevent36.jpg',
     alt: 'Festive celebration with vibrant decorations and entertainment setup',
     category: 'festival',
     title: 'Festival Celebration',

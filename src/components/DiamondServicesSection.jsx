@@ -56,7 +56,7 @@ const DiamondServicesSection = () => {
           />
 
           <DiamondItem 
-            service={{ title: 'MEHENDI\nCELEBRATION', icon: Star }}
+            service={{ title: 'REUNIONS', icon: Star }}
             position={{ top: '5%', left: '50%', transform: 'translateX(-50%)' }}
             delay={0.2}
           />
@@ -116,7 +116,7 @@ const DiamondServicesSection = () => {
         <div className="lg:hidden grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {[
             { title: 'WEDDING\nFUNCTIONS', icon: Heart },
-            { title: 'MEHENDI\nCELEBRATION', icon: Star },
+            { title: 'REUNIONS', icon: Star },
             { title: 'SOCIAL', icon: Users },
             { title: 'ENGAGEMENTS', icon: Crown },
             { title: 'GET-\nTOGETHER', icon: PartyPopper },

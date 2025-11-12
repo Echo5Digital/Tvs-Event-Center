@@ -22,7 +22,7 @@ const ContactForm = () => {
     'Corporate Event',
     'Birthday Party',
     'Engagement',
-    'Mehendi Ceremony',
+    'Reunions',
     'Conference',
     'Product Launch',
     'Other'

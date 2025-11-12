@@ -64,13 +64,13 @@ export default function HomePage() {
                     <div className="text-sm text-gray-600">Total Space</div>
                   </div>
                 </div>
-
+{/* 
                 <div className="mt-8">
                   <Link href="/about" className="btn-primary inline-flex items-center">
                     Learn More About Us
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
-                </div>
+                </div> */}
               </motion.div>
 
               <motion.div
@@ -83,7 +83,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <div className="relative h-48 rounded-2xl overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1519167758481-83f29d8ae8e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      src="/images/tvevent34.jpg"
                       alt="Elegant wedding setup"
                       fill
                       className="object-cover"
@@ -91,7 +91,7 @@ export default function HomePage() {
                   </div>
                   <div className="relative h-32 rounded-2xl overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      src="/images/tvevent35.jpg"
                       alt="Corporate event setup"
                       fill
                       className="object-cover"
@@ -101,7 +101,7 @@ export default function HomePage() {
                 <div className="space-y-4 mt-8">
                   <div className="relative h-32 rounded-2xl overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      src="/images/tvevent36.jpg"
                       alt="Birthday celebration"
                       fill
                       className="object-cover"
@@ -109,7 +109,7 @@ export default function HomePage() {
                   </div>
                   <div className="relative h-48 rounded-2xl overflow-hidden">
                     <Image
-                      src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                      src="/images/tvevent34.jpg"
                       alt="Outdoor garden event"
                       fill
                       className="object-cover"

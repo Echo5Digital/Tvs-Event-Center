@@ -6,7 +6,7 @@ export const testimonials = [
     event: 'Wedding Reception',
     rating: 5,
     comment: 'TV Event Center made our wedding day absolutely magical! The attention to detail, beautiful decor, and exceptional service exceeded all our expectations. Our guests are still talking about the amazing experience.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+    image: '/images/tvevent34.jpg',
     date: '2024-10-15'
   },
   {
@@ -43,9 +43,9 @@ export const testimonials = [
     id: 5,
     name: 'Anita Patel',
     role: 'Mother of Bride',
-    event: 'Mehendi Ceremony',
+    event: 'Reunions Ceremony',
     rating: 5,
-    comment: 'The mehendi ceremony was beautifully organized with traditional decorations and a warm atmosphere. The staff understood our cultural requirements perfectly and delivered an authentic experience.',
+    comment: 'The Reunions ceremony was beautifully organized with traditional decorations and a warm atmosphere. The staff understood our cultural requirements perfectly and delivered an authentic experience.',
     image: 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
     date: '2024-06-25'
   },

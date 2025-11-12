@@ -99,9 +99,9 @@ export const contactInfo = {
     sunday: '10:00 AM - 6:00 PM'
   },
   socialMedia: {
-    facebook: 'https://facebook.com/tveventcenter',
-    instagram: 'https://instagram.com/tveventcenter',
-    youtube: 'https://youtube.com/tveventcenter',
-    twitter: 'https://twitter.com/tveventcenter'
+    facebook: '.....',
+    instagram: '....',
+    youtube: '.....',
+    twitter: '....'
   }
 }

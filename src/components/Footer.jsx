@@ -157,9 +157,20 @@ const Footer = () => {
       <div className="border-t border-gray-700">
         <div className="max-w-7xl mx-auto container-padding py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              © {currentYear} TV Event Center. All rights reserved.
-            </p>
+            <div className="text-gray-400 text-sm text-center md:text-left">
+              <p>© {currentYear} TV Event Center. All rights reserved.</p>
+              <p className="mt-1">
+                Developed by{' '}
+                <a 
+                  href="https://www.echo5digital.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-amber-400 hover:text-amber-300 transition-colors duration-300 font-medium"
+                >
+                  Echo5 Digital
+                </a>
+              </p>
+            </div>
             <div className="flex space-x-6 text-sm">
               <Link href="/privacy" className="text-gray-400 hover:text-gold-400 transition-colors duration-300">
                 Privacy Policy

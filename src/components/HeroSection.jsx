@@ -106,19 +106,19 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto container-padding text-center">
+      <div className="relative z-10 max-w-7xl mx-auto container-padding text-center px-4 py-8 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-6 md:space-y-8"
         >
           {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-medium text-lg tracking-wide uppercase"
+            className="font-medium text-sm md:text-lg tracking-wide uppercase"
             style={{ color: '#d97b15' }}
           >
             TV Event Center
@@ -129,7 +129,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight"
+            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-white leading-tight px-2"
           >
             Celebrate Life's{' '}
             <span className="text-gradient">
@@ -142,7 +142,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed"
+            className="text-sm sm:text-base md:text-xl lg:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed px-4"
           >
             Where luxury meets celebration. Create unforgettable memories in our state-of-the-art event venues designed for life's most precious moments.
           </motion.p>
@@ -152,18 +152,18 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap justify-center items-center gap-8 text-white/80"
+            className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 md:gap-8 text-white/80 text-sm md:text-base"
           >
             <div className="flex items-center space-x-2">
-              <MapPin className="w-5 h-5" style={{ color: '#d97b15' }} />
+              <MapPin className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#d97b15' }} />
               <span>Premium Location</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Calendar className="w-5 h-5" style={{ color: '#d97b15' }} />
+              <Calendar className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#d97b15' }} />
               <span>1000+ Events Hosted</span>
             </div>
             <div className="flex items-center space-x-2">
-              <Play className="w-5 h-5" style={{ color: '#d97b15' }} />
+              <Play className="w-4 h-4 md:w-5 md:h-5" style={{ color: '#d97b15' }} />
               <span>Full-Service Planning</span>
             </div>
           </motion.div>
@@ -173,17 +173,17 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-6 pt-8"
+            className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 pt-6 md:pt-8 px-4"
           >
             <Link
               href="/contact"
-              className="btn-primary text-lg px-10 py-4 shadow-2xl hover:shadow-gold-500/25"
+              className="btn-primary text-sm md:text-lg px-6 md:px-10 py-3 md:py-4 shadow-2xl hover:shadow-gold-500/25 w-full sm:w-auto text-center"
             >
               Book Your Event
             </Link>
             <Link
               href="/gallery"
-              className="btn-secondary text-lg px-10 py-4 border-white text-white hover:bg-white hover:text-gray-900"
+              className="btn-secondary text-sm md:text-lg px-6 md:px-10 py-3 md:py-4 border-white text-white hover:bg-white hover:text-gray-900 w-full sm:w-auto text-center"
             >
               View Gallery
             </Link>
@@ -194,37 +194,37 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-white/20"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-8 md:pt-16 border-t border-white/20 mx-4"
           >
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}>
+              <div className="text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2" style={{ color: '#d97b15' }}>
                 7,500
               </div>
-              <div className="text-white/80 text-sm uppercase tracking-wide">
+              <div className="text-white/80 text-xs md:text-sm uppercase tracking-wide">
                 Sq Ft Space
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}>
+              <div className="text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2" style={{ color: '#d97b15' }}>
                 1,000
               </div>
-              <div className="text-white/80 text-sm uppercase tracking-wide">
+              <div className="text-white/80 text-xs md:text-sm uppercase tracking-wide">
                 Max Capacity
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}>
+              <div className="text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2" style={{ color: '#d97b15' }}>
                 10+
               </div>
-              <div className="text-white/80 text-sm uppercase tracking-wide">
+              <div className="text-white/80 text-xs md:text-sm uppercase tracking-wide">
                 Years Experience
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#d97b15' }}>
+              <div className="text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2" style={{ color: '#d97b15' }}>
                 24/7
               </div>
-              <div className="text-white/80 text-sm uppercase tracking-wide">
+              <div className="text-white/80 text-xs md:text-sm uppercase tracking-wide">
                 Event Support
               </div>
             </div>

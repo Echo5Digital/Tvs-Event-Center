@@ -1,0 +1,45 @@
+{
+  "name": "tv-event-center-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "keywords": [
+    "nextjs",
+    "event-center",
+    "venue",
+    "booking"
+  ],
+  "author": "TV Event Center",
+  "license": "MIT",
+  "description": "TV Event Center - A luxurious event venue website built with Next.js 14",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.1",
+    "autoprefixer": "^10.4.22",
+    "playwright-mcp": "^0.0.13",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@radix-ui/react-slot": "^1.2.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "critters": "^0.0.23",
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.553.0",
+    "next": "^16.0.1",
+    "next-seo": "^7.0.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.4.0"
+  }
+}

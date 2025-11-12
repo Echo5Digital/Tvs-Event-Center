@@ -5,6 +5,7 @@ import SectionHeading from '@/components/SectionHeading'
 import CardGrid from '@/components/CardGrid'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import DiamondServicesSection from '@/components/DiamondServicesSection'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,6 +27,9 @@ export default function HomePage() {
       <main>
         {/* Hero Section */}
         <HeroSection />
+
+        {/* Diamond Services Section */}
+        <DiamondServicesSection />
 
         {/* About Preview Section */}
         <section className="section-padding bg-gradient-to-br from-gray-50 to-white">

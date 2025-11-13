@@ -2,7 +2,12 @@ import { PrismaClient } from '@prisma/client'
 import { NextResponse } from 'next/server'
 import slugify from 'slugify'
 
-const prisma = new PrismaClient()
+// Use globalThis to prevent multiple Prisma instances in development
+const globalForPrisma = globalThis
+
+const prisma = globalForPrisma.prisma || new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 // GET - Fetch all blog posts
 export async function GET(request) {
@@ -41,6 +46,11 @@ export async function GET(request) {
 export async function POST(request) {
   try {
     const body = await request.json()
+    
+    // Validate required fields
+    if (!body.title || !body.content) {
+      return NextResponse.json({ error: 'Title and content are required' }, { status: 400 })
+    }
     
     // Generate slug from title
     const slug = slugify(body.title, { lower: true, strict: true })

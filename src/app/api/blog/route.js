@@ -1,7 +1,12 @@
 import { PrismaClient } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
-const prisma = new PrismaClient()
+// Use globalThis to prevent multiple Prisma instances in development
+const globalForPrisma = globalThis
+
+const prisma = globalForPrisma.prisma || new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 // GET - Fetch published blog posts for public consumption
 export async function GET(request) {

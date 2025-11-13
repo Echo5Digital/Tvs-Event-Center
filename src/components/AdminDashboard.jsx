@@ -471,7 +471,68 @@ const AdminDashboard = () => {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            {/* Modal content would be here - keeping existing modal structure */}
+
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Name</label>
+                  <p className="mt-1 text-sm text-gray-900">{selectedSubmission.name}</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Email</label>
+                  <p className="mt-1 text-sm text-gray-900">{selectedSubmission.email}</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Phone</label>
+                  <p className="mt-1 text-sm text-gray-900">{selectedSubmission.phone || 'Not provided'}</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Event Type</label>
+                  <p className="mt-1 text-sm text-gray-900">{selectedSubmission.event_type || 'Not specified'}</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Event Date</label>
+                  <p className="mt-1 text-sm text-gray-900">
+                    {selectedSubmission.event_date ? new Date(selectedSubmission.event_date).toLocaleDateString() : 'Not specified'}
+                  </p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Guest Count</label>
+                  <p className="mt-1 text-sm text-gray-900">{selectedSubmission.guest_count || 'Not specified'}</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Budget Range</label>
+                  <p className="mt-1 text-sm text-gray-900">{selectedSubmission.budget_range || 'Not specified'}</p>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Status</label>
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(selectedSubmission.status)}`}>
+                    {getStatusIcon(selectedSubmission.status)}
+                    <span className="ml-1 capitalize">{selectedSubmission.status}</span>
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Message</label>
+                <div className="mt-1 p-3 bg-gray-50 rounded-lg">
+                  <p className="text-sm text-gray-900 whitespace-pre-wrap">
+                    {selectedSubmission.message || 'No message provided'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-500">
+                <div>
+                  <label className="block font-medium">Submitted</label>
+                  <p>{new Date(selectedSubmission.created_at).toLocaleString()}</p>
+                </div>
+                <div>
+                  <label className="block font-medium">Last Updated</label>
+                  <p>{new Date(selectedSubmission.updated_at).toLocaleString()}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

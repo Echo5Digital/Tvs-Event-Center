@@ -95,7 +95,36 @@ export async function POST(request) {
     return NextResponse.json(post)
   } catch (error) {
     console.error('Error creating blog post:', error)
-    return NextResponse.json({ error: 'Failed to create blog post' }, { status: 500 })
+    console.error('Error details:', {
+      name: error.name,
+      message: error.message,
+      code: error.code,
+      stack: error.stack
+    })
+    
+    // More specific error messages
+    if (error.code === 'P1001') {
+      return NextResponse.json({ 
+        error: 'Database connection failed. Please check your DATABASE_URL environment variable.' 
+      }, { status: 500 })
+    }
+    
+    if (error.code === 'P2002') {
+      return NextResponse.json({ 
+        error: 'A post with this title already exists.' 
+      }, { status: 400 })
+    }
+    
+    if (error.message.includes('relation') && error.message.includes('does not exist')) {
+      return NextResponse.json({ 
+        error: 'Database tables not initialized. Please run database migration.' 
+      }, { status: 500 })
+    }
+    
+    return NextResponse.json({ 
+      error: 'Failed to create blog post', 
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    }, { status: 500 })
   }
 }
 

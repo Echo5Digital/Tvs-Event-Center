@@ -31,16 +31,16 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
-    >
+<motion.nav
+  initial={{ y: -100 }}
+  animate={{ y: 0 }}
+  transition={{ duration: 0.5 }}
+  className={`fixed w-full z-[9999] px-4 transition-all duration-300 ${
+    isScrolled
+      ? 'bg-white/95 backdrop-blur-md shadow-lg'
+      : 'bg-transparent'
+  }`}
+>
       <div className="max-w-7xl mx-auto container-padding">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}

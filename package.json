@@ -18,7 +18,7 @@
     "booking"
   ],
   "author": "TVS Event Center",
-  "license": "MIT", 
+  "license": "MIT",
   "description": "TVS Event Center - A luxurious event venue website built with Next.js 16. Located in Rosharon, TX. Pricing $649 plus tax.",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
@@ -40,6 +40,8 @@
     "next": "^16.0.1",
     "next-seo": "^7.0.1",
     "react": "^19.2.0",
+    "react-calendar": "^6.0.0",
+    "react-datepicker": "^8.9.0",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.4.0"
   }

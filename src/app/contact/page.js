@@ -156,26 +156,28 @@ export default function ContactPage() {
               </div>
 
               {/* Map */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="lg:col-span-2"
-              >
-                <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-96 lg:h-full">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153169!3d-37.81627997975195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f3a5db%3A0x5045675218ce7e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1635777234567!5m2!1sen!2sus"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="TVS Event Center Location"
-                  />
-                </div>
-              </motion.div>
+{/* Map */}
+<motion.div
+  initial={{ opacity: 0, x: 30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8 }}
+  className="lg:col-span-2"
+>
+  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-96 lg:h-full">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3472.766726705755!2d-95.43298080000001!3d29.494002799999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640ed5619e3c595%3A0x6f41791509f91989!2sTVS%20Event%20Center!5e0!3m2!1sen!2sin!4v1763018901572!5m2!1sen!2sin"
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen=""
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      title="TVS Event Center Location"
+    />
+  </div>
+</motion.div>
+
             </div>
           </div>
         </section>

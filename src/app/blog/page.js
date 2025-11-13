@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import BlogHero from '@/components/BlogHero'
@@ -8,31 +8,61 @@ import BlogCard from '@/components/BlogCard'
 import SectionHeading from '@/components/SectionHeading'
 import { motion } from 'framer-motion'
 import { Search, Filter, Grid, List } from 'lucide-react'
-import { blogPosts, blogCategories, getFeaturedPosts, getPostsByCategory, searchPosts } from '@/data/blogPosts'
-
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [viewMode, setViewMode] = useState('grid') // 'grid' or 'list'
   const [showFilters, setShowFilters] = useState(false)
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const featuredPosts = getFeaturedPosts()
+  // Categories for filtering
+  const blogCategories = [
+    { id: 'all', name: 'All Posts', slug: 'all' },
+    { id: 'wedding', name: 'Wedding Planning', slug: 'Wedding Planning' },
+    { id: 'corporate', name: 'Corporate Events', slug: 'Corporate Events' },
+    { id: 'party', name: 'Party Planning', slug: 'Party Planning' },
+    { id: 'catering', name: 'Catering', slug: 'Catering' },
+    { id: 'photography', name: 'Photography', slug: 'Photography' },
+    { id: 'design', name: 'Event Design', slug: 'Event Design' },
+    { id: 'entertainment', name: 'Entertainment', slug: 'Entertainment' }
+  ]
 
-  // Filter and search posts
-  const filteredPosts = useMemo(() => {
-    let posts = getPostsByCategory(selectedCategory)
-    
-    if (searchQuery.trim()) {
-      posts = searchPosts(searchQuery)
+  // Fetch posts from API
+  const fetchPosts = async () => {
+    try {
+      setLoading(true)
+      let url = '/api/blog?limit=50'
+      
       if (selectedCategory !== 'all') {
-        posts = posts.filter(post => 
-          post.category.toLowerCase().replace(/\s+/g, '-') === selectedCategory
-        )
+        const categorySlug = blogCategories.find(c => c.id === selectedCategory)?.slug
+        if (categorySlug) {
+          url += `&category=${encodeURIComponent(categorySlug)}`
+        }
       }
+      
+      if (searchQuery.trim()) {
+        url += `&search=${encodeURIComponent(searchQuery)}`
+      }
+
+      const response = await fetch(url)
+      if (response.ok) {
+        const data = await response.json()
+        setPosts(data)
+      }
+    } catch (error) {
+      console.error('Error fetching posts:', error)
+    } finally {
+      setLoading(false)
     }
-    
-    return posts
-  }, [searchQuery, selectedCategory])
+  }
+
+  useEffect(() => {
+    fetchPosts()
+  }, [selectedCategory, searchQuery])
+
+  const featuredPosts = posts.filter(post => post.featured)
+  const filteredPosts = posts
 
   return (
     <>
@@ -75,15 +105,24 @@ export default function BlogPage() {
           <div className="max-w-7xl mx-auto container-padding">
             <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
               {/* Search Bar */}
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search articles..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-white"
-                />
+              <div className="relative flex-1 max-w-md flex">
+                <div className="relative flex-1">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="text"
+                    placeholder="Search articles..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && fetchPosts()}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-l-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-white"
+                  />
+                </div>
+                <button
+                  onClick={fetchPosts}
+                  className="px-4 py-3 bg-amber-600 text-white rounded-r-lg hover:bg-amber-700 transition-colors"
+                >
+                  Search
+                </button>
               </div>
 
               {/* Filter Toggle */}
@@ -130,9 +169,9 @@ export default function BlogPage() {
                   {blogCategories.map((category) => (
                     <button
                       key={category.id}
-                      onClick={() => setSelectedCategory(category.slug)}
+                      onClick={() => setSelectedCategory(category.id)}
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                        selectedCategory === category.slug
+                        selectedCategory === category.id
                           ? 'bg-primary text-white shadow-lg'
                           : 'bg-white text-gray-700 border border-gray-200 hover:border-amber-300 hover:text-amber-700'
                       }`}
@@ -156,7 +195,7 @@ export default function BlogPage() {
                     ? `Search Results for "${searchQuery}"` 
                     : selectedCategory === 'all' 
                       ? 'All Articles' 
-                      : blogCategories.find(c => c.slug === selectedCategory)?.name || 'Articles'
+                      : blogCategories.find(c => c.id === selectedCategory)?.name || 'Articles'
                   }
                 </h2>
                 <p className="text-gray-600 mt-2">{filteredPosts.length} articles found</p>

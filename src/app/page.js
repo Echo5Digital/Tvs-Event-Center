@@ -12,7 +12,8 @@ import Link from 'next/link'
 import { ArrowRight, Star, Users, Calendar, MapPin, Award, Heart, Crown } from 'lucide-react'
 import { services } from '@/data/services'
 import { venueHalls } from '@/data/venueHalls'
-import { testimonials, companyInfo } from '@/data/testimonials'
+import { testimonials } from '@/data/testimonials'
+import { companyInfo } from '@/data/companyInfo'
 import { galleryImages } from '@/data/gallery'
 
 export default function HomePage() {
@@ -44,7 +45,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8 }}
               >
                 <SectionHeading
-                  subtitle="About TV Event Center"
+                  subtitle="About TVS Event Center"
                   title="Where Dreams Come to Life"
                   description={companyInfo.description}
                   centered={false}
@@ -165,11 +166,128 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Pricing Section */}
+        <section className="section-padding bg-gradient-to-br from-gold-50 to-accent/5">
+          <div className="max-w-7xl mx-auto container-padding">
+            <SectionHeading
+              subtitle="Transparent Pricing"
+              title="Our Venue Packages"
+              description="Simple, straightforward pricing with everything you need for your perfect event."
+              centered={true}
+            />
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
+              {/* Main Package */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="bg-white rounded-2xl shadow-xl p-8 relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-accent to-gold-600"></div>
+                
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-heading mb-2">Venue Rental</h3>
+                  <div className="text-5xl font-bold text-heading mb-2">
+                    ${companyInfo.pricing.basePrice}
+                    <span className="text-lg font-normal text-gray-600"> {companyInfo.pricing.taxNote}</span>
+                  </div>
+                  <p className="text-gray-600">Complete venue package</p>
+                </div>
+
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span className="text-gray-700">Daytime Events</span>
+                    <span className="font-semibold text-accent">{companyInfo.pricing.timeSlots.daytime.hours}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span className="text-gray-700">Evening Events</span>
+                    <span className="font-semibold text-accent">{companyInfo.pricing.timeSlots.evening.hours}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-accent/10 rounded-lg border-2 border-accent/20">
+                    <span className="text-gray-700">Cleaning Fee</span>
+                    <span className="font-bold text-accent">${companyInfo.pricing.cleaning.fee}</span>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <h4 className="font-semibold text-heading mb-3">What's Included:</h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center">
+                      <Star className="w-4 h-4 text-accent mr-2" />
+                      <span>Full venue access</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Users className="w-4 h-4 text-accent mr-2" />
+                      <span>Capacity up to {companyInfo.maxCapacity}</span>
+                    </li>
+                    <li className="flex items-center">
+                      <MapPin className="w-4 h-4 text-accent mr-2" />
+                      <span>{companyInfo.totalArea} event space</span>
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+
+              {/* Services & Contact */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="space-y-6"
+              >
+                {/* Available Services */}
+                <div className="bg-white rounded-2xl shadow-lg p-6">
+                  <h3 className="text-xl font-bold text-heading mb-4">Available Services</h3>
+                  <div className="grid grid-cols-1 gap-3">
+                    {companyInfo.services.map((service, index) => (
+                      <div key={index} className="flex items-center p-3 bg-gray-50 rounded-lg">
+                        <Crown className="w-5 h-5 text-accent mr-3" />
+                        <span className="text-gray-700">{service}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Contact for Booking */}
+                <div className="bg-gradient-to-br from-accent to-gold-600 text-white rounded-2xl shadow-lg p-6">
+                  <h3 className="text-xl font-bold mb-4">Ready to Book?</h3>
+                  <p className="mb-4 opacity-90">
+                    Contact {companyInfo.contact.contactPerson} to discuss your event and secure your date.
+                  </p>
+                  
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-center">
+                      <span className="font-semibold">Phone:</span>
+                      <a href={`tel:${companyInfo.contact.phone}`} className="ml-2 hover:underline">
+                        {companyInfo.contact.phone}
+                      </a>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="font-semibold">Address:</span>
+                      <span className="ml-2 text-sm">{companyInfo.address.full}</span>
+                    </div>
+                  </div>
+
+                  <Link 
+                    href="/contact" 
+                    className="inline-block bg-white text-accent px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                  >
+                    Get Quote & Book Now
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Why Choose Us */}
         <section className="section-padding">
           <div className="max-w-7xl mx-auto container-padding">
             <SectionHeading
-              subtitle="Why Choose TV Event Center"
+              subtitle="Why Choose TVS Event Center"
               title="Excellence in Every Detail"
               description="We're committed to making your event extraordinary with our attention to detail, professional service, and luxurious amenities."
             />
@@ -266,7 +384,7 @@ export default function HomePage() {
             <SectionHeading
               subtitle="Client Testimonials"
               title="What Our Clients Say"
-              description="Don't just take our word for it. Here's what our satisfied clients have to say about their experience with TV Event Center."
+              description="Don't just take our word for it. Here's what our satisfied clients have to say about their experience with TVS Event Center."
             />
             
             <div className="mt-16">
@@ -310,10 +428,10 @@ export default function HomePage() {
                   Book a Consultation
                 </Link>
                 <Link
-                  href="tel:+15551234567"
+                  href="tel:3462697713"
                   className="border-2 border-white text-white hover:bg-white hover:text-gold-600 font-semibold px-8 py-4 rounded-lg transition-all duration-300"
                 >
-                  Call Now: +1 (555) 555-555
+                  Call Now: (346) 269-7713
                 </Link>
               </div>
             </motion.div>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Facebook, Instagram, Youtube, Twitter, Phone, Mail, MapPin, Clock } from 'lucide-react'
-import { contactInfo } from '@/data/testimonials'
+import { companyInfo, contactInfo } from '@/data/companyInfo'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -13,14 +13,15 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="text-2xl font-display font-bold text-gradient mb-4">
-              TV Event Center
+              TVS Event Center
             </div>
             <p className="text-gray-300 leading-relaxed">
               Creating unforgettable moments and priceless memories. Where life's most beautiful celebrations come to life in luxury and elegance.
             </p>
             <div className="flex space-x-4">
               <a
-                href={contactInfo.socialMedia.facebook}
+                // href={contactInfo.socialMedia.facebook}
+                href='...'
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-gold-600 hover:bg-gold-700 rounded-lg transition-colors duration-300"
@@ -29,7 +30,9 @@ const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href={contactInfo.socialMedia.instagram}
+                // href={contactInfo.socialMedia.instagram}
+                href='...'
+
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-gold-600 hover:bg-gold-700 rounded-lg transition-colors duration-300"
@@ -38,7 +41,9 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href={contactInfo.socialMedia.youtube}
+                // href={contactInfo.socialMedia.youtube}
+                href='...'
+
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-gold-600 hover:bg-gold-700 rounded-lg transition-colors duration-300"
@@ -47,7 +52,9 @@ const Footer = () => {
                 <Youtube className="w-5 h-5" />
               </a>
               <a
-                href={contactInfo.socialMedia.twitter}
+                // href={contactInfo.socialMedia.twitter}
+                href='...'
+
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 bg-gold-600 hover:bg-gold-700 rounded-lg transition-colors duration-300"
@@ -123,28 +130,33 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gold-500 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300">{contactInfo.phone}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-gold-500 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300">{contactInfo.email}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-3">
                 <Clock className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300 text-sm">
-                    Mon-Fri: {contactInfo.businessHours.weekdays}<br />
+                    Daytime Events :
+                    9AM - 4PM <br></br>
+                    Evening Events :
+                    6PM - 12AM
+                    {/* Mon-Fri: {contactInfo.businessHours.weekdays}<br />
                     Saturday: {contactInfo.businessHours.saturday}<br />
-                    Sunday: {contactInfo.businessHours.sunday}
+                    Sunday: {contactInfo.businessHours.sunday} */}
+
                   </p>
                 </div>
               </div>
@@ -158,12 +170,12 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto container-padding py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm text-center md:text-left">
-              <p>© {currentYear} TV Event Center. All rights reserved.</p>
+              <p>© {currentYear} TVS Event Center. All rights reserved.</p>
               <p className="mt-1">
                 Developed by{' '}
-                <a 
-                  href="https://www.echo5digital.com/" 
-                  target="_blank" 
+                <a
+                  href="https://www.echo5digital.com/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-400 hover:text-amber-300 transition-colors duration-300 font-medium"
                 >

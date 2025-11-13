@@ -45,7 +45,7 @@ const HeroSection = () => {
           >
             <Image
               src={backgroundImages[currentImageIndex]}
-              alt={`TV Event Center - Image ${currentImageIndex + 1}`}
+              alt={`TVS Event Center - Image ${currentImageIndex + 1}`}
               fill
               className="object-cover object-center"
               priority={currentImageIndex === 0}
@@ -121,7 +121,7 @@ const HeroSection = () => {
             className="font-medium text-sm md:text-lg tracking-wide uppercase"
             style={{ color: '#d97b15' }}
           >
-            TV Event Center
+            TVS Event Center
           </motion.p>
 
           {/* Main Heading */}

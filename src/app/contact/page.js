@@ -19,7 +19,7 @@ export default function ContactPage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-              alt="Contact TV Event Center"
+              alt="Contact TVS Event Center"
               fill
               className="object-cover"
               priority
@@ -66,7 +66,7 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto container-padding">
             <SectionHeading
               subtitle="Visit Us"
-              title="Find TV Event Center"
+              title="Find TVS Event Center"
               description="Located in the heart of the city with easy access and ample parking for all your guests."
             />
             
@@ -172,7 +172,7 @@ export default function ContactPage() {
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="TV Event Center Location"
+                    title="TVS Event Center Location"
                   />
                 </div>
               </motion.div>

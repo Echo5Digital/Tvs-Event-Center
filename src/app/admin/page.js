@@ -5,6 +5,6 @@ export default function AdminPage() {
 }
 
 export const metadata = {
-  title: 'Admin Dashboard - TV Event Center',
+  title: 'Admin Dashboard - TVS Event Center',
   description: 'Manage contact form submissions and track inquiries',
 }

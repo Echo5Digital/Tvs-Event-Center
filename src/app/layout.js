@@ -2,27 +2,27 @@ import './globals.css'
 
 export const metadata = {
   title: {
-    default: 'TV Event Center - Celebrate Life\'s Best Moments',
-    template: '%s | TV Event Center'
+    default: 'TVS Event Center - Celebrate Life\'s Best Moments',
+    template: '%s | TVS Event Center'
   },
-  description: 'TV Event Center is a luxurious event venue perfect for weddings, corporate events, birthdays, and celebrations. Located in a picturesque setting with state-of-the-art facilities.',
-  keywords: ['event venue', 'wedding hall', 'corporate events', 'birthday parties', 'luxury venue', 'event center'],
-  authors: [{ name: 'TV Event Center' }],
-  creator: 'TV Event Center',
-  publisher: 'TV Event Center',
+  description: 'TVS Event Center is a luxurious event venue perfect for weddings, corporate events, birthdays, and celebrations. Located in Rosharon, TX with state-of-the-art facilities. Pricing starts at $649 plus tax.',
+  keywords: ['event venue', 'wedding hall', 'corporate events', 'birthday parties', 'luxury venue', 'event center', 'Rosharon TX', 'catering', 'DJ services'],
+  authors: [{ name: 'TVS Event Center' }],
+  creator: 'TVS Event Center',
+  publisher: 'TVS Event Center',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://tveventcenter.com',
-    title: 'TV Event Center - Celebrate Life\'s Best Moments',
-    description: 'TV Event Center is a luxurious event venue perfect for weddings, corporate events, birthdays, and celebrations.',
-    siteName: 'TV Event Center',
+    url: 'https://tvseventcenter.com',
+    title: 'TVS Event Center - Celebrate Life\'s Best Moments',
+    description: 'TVS Event Center is a luxurious event venue perfect for weddings, corporate events, birthdays, and celebrations. Located in Rosharon, TX. Pricing $649 plus tax.',
+    siteName: 'TVS Event Center',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TV Event Center - Celebrate Life\'s Best Moments',
-    description: 'TV Event Center is a luxurious event venue perfect for weddings, corporate events, birthdays, and celebrations.',
-    creator: '@tveventcenter',
+    title: 'TVS Event Center - Celebrate Life\'s Best Moments',
+    description: 'TVS Event Center is a luxurious event venue perfect for weddings, corporate events, birthdays, and celebrations. Located in Rosharon, TX. Pricing $649 plus tax.',
+    creator: '@tvseventcenter',
   },
   robots: {
     index: true,

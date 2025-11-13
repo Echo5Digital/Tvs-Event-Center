@@ -46,7 +46,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="text-2xl lg:text-3xl font-display font-bold text-gradient">
-              TV Event Center
+              TVS Event Center
             </div>
           </Link>
 
@@ -85,7 +85,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-2 text-sm">
               <Phone className="w-4 h-4" />
               <span className={isScrolled ? 'text-gray-700' : 'text-white'}>
-                +1 (555) 555-5555
+                (346) 269-7713
               </span>
             </div>
             <Link
@@ -147,7 +147,7 @@ const Navbar = () => {
                 <div className="border-t border-gray-200 pt-4 space-y-3">
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Phone className="w-4 h-4" />
-                    <span>+1 (555) 555-5555</span>
+                    <span>(346) 269-7713</span>
                   </div>
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Mail className="w-4 h-4" />

@@ -118,14 +118,14 @@ const ContactForm = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="tel:+15551234567"
+            href="tel:3462697713"
             className="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-lg transition-colors duration-300"
           >
             <Phone className="w-4 h-4 mr-2" />
             Call Now
           </a>
           <a
-            href="https://wa.me/15551234567"
+            href="https://wa.me/13462697713"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center border-2 border-gold-500 text-gold-600 hover:bg-gold-500 hover:text-white px-6 py-3 rounded-lg transition-all duration-300"
@@ -163,7 +163,7 @@ const ContactForm = () => {
             </div>
             <div>
               <h4 className="font-semibold text-gray-900">Phone</h4>
-              <p className="text-gray-600">+1 (555) 555-555</p>
+              <p className="text-gray-600">(346) 269-7713</p>
               <p className="text-sm text-gray-500">Available 24/7 for urgent inquiries</p>
             </div>
           </div>
@@ -186,8 +186,8 @@ const ContactForm = () => {
             <div>
               <h4 className="font-semibold text-gray-900">Address</h4>
               <p className="text-gray-600">
-                123 Event Center Drive<br />
-                Metropolitan City, State 12345
+                15511 Hwy 6 Suite A<br />
+                Rosharon, TX 77583
               </p>
             </div>
           </div>

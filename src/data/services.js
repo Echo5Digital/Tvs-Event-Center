@@ -4,7 +4,7 @@ export const services = [
     title: 'Wedding',
     slug: 'wedding',
     description: 'Create magical moments with our comprehensive wedding services. From intimate ceremonies to grand receptions, we make your special day unforgettable.',
-    detailedDescription: 'Your wedding day should be everything you\'ve dreamed of and more. At TV Event Center, we specialize in creating magical moments that will be cherished for a lifetime. Our experienced team works closely with you to bring your vision to life, ensuring every detail is perfect from the ceremony to the reception.',
+    detailedDescription: 'Your wedding day should be everything you\'ve dreamed of and more. At TVS Event Center, we specialize in creating magical moments that will be cherished for a lifetime. Our experienced team works closely with you to bring your vision to life, ensuring every detail is perfect from the ceremony to the reception.',
     highlights: [
       'Elegant bridal suites for preparation',
       'Customizable ceremony and reception spaces',

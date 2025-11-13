@@ -18,7 +18,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 z-0">
             <Image
               src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-              alt="TV Event Center interior"
+              alt="TVS Event Center interior"
               fill
               className="object-cover"
               priority
@@ -33,7 +33,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
             >
               <p className="text-gold-400 font-medium text-lg mb-4 uppercase tracking-wide">
-                About TV Event Center
+                About TVS Event Center
               </p>
               <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">
                 Creating Memories Since {companyInfo.established}
@@ -58,7 +58,7 @@ export default function AboutPage() {
                 <SectionHeading
                   subtitle="Our Story"
                   title="A Journey of Excellence"
-                  description="Founded in 2015, TV Event Center has been the premier destination for luxury events and celebrations. Our passion for creating extraordinary experiences has made us the most trusted name in event hosting."
+                  description="Founded in 2015, TVS Event Center has been the premier destination for luxury events and celebrations. Our passion for creating extraordinary experiences has made us the most trusted name in event hosting."
                   centered={false}
                 />
                 
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/images/tvevent35.jpg"
-                    alt="Elegant event setup at TV Event Center"
+                    alt="Elegant event setup at TVS Event Center"
                     fill
                     className="object-cover"
                   />
@@ -162,7 +162,7 @@ export default function AboutPage() {
             <SectionHeading
               subtitle="Features & Amenities"
               title="Luxury at Every Turn"
-              description="Discover the premium features and world-class amenities that make TV Event Center the perfect choice for your special occasion."
+              description="Discover the premium features and world-class amenities that make TVS Event Center the perfect choice for your special occasion."
             />
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
@@ -232,7 +232,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto container-padding">
             <SectionHeading
               subtitle="Why Choose Us"
-              title="The TV Event Center Difference"
+              title="The TVS Event Center Difference"
               description="Discover what sets us apart and makes us the preferred choice for discerning clients who demand excellence."
             />
             

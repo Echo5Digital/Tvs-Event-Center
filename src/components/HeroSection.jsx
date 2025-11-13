@@ -106,7 +106,7 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto container-padding text-center px-4 py-8 md:py-16">
+      <div className="relative z-10 max-w-7xl mx-auto container-padding text-center px-4 py-4 md:py-16">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-medium text-sm md:text-lg tracking-wide uppercase"
+            className="font-medium text-sm md:text-lg tracking-wide uppercase hidden sm:block"
             style={{ color: '#d97b15' }}
           >
             TVS Event Center

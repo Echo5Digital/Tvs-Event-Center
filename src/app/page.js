@@ -428,7 +428,7 @@ export default function HomePage() {
                   Book a Consultation
                 </Link>
                 <Link
-                  href="tel:3462697713"
+                  href="tel:+1-346-269-7713"
                   className="border-2 border-white text-white hover:bg-white hover:text-gold-600 font-semibold px-8 py-4 rounded-lg transition-all duration-300"
                 >
                   Call Now: (346) 269-7713

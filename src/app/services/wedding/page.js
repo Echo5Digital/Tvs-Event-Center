@@ -316,7 +316,7 @@ export default function WeddingPage() {
                 Get a Quote
               </Link>
               <a
-                href="tel:+91-XXXXXXXXXX"
+                href="tel:+1-346-269-7713"
                 className="border-2 border-white text-white hover:bg-white hover:text-amber-600 px-8 py-3 rounded-lg font-semibold transition-colors flex items-center"
               >
                 <Phone className="w-5 h-5 mr-2" />

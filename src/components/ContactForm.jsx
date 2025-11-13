@@ -118,7 +118,7 @@ const ContactForm = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="tel:3462697713"
+            href="tel:+1-346-269-7713"
             className="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-lg transition-colors duration-300"
           >
             <Phone className="w-4 h-4 mr-2" />

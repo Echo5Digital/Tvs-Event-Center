@@ -20,7 +20,7 @@ out/
 /playwright/.cache/
 /playwright/.auth/
 
-# OS
+# OS 
 .DS_Store
 Thumbs.db
 

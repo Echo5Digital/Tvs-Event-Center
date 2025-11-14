@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import BlogManagement from './BlogManagement'
 import AdminCalendar from './AdminCalendar'
+import jsPDF from 'jspdf'
+import 'jspdf-autotable'
 import { 
   Users, 
   Mail, 
@@ -99,38 +101,118 @@ const AdminDashboard = () => {
     }
   }
 
-  // Export data to CSV
-  const exportToCSV = () => {
-    const headers = [
-      'Date', 'Name', 'Email', 'Phone', 'Event Type', 
-      'Event Date', 'Guest Count', 'Budget Range', 'Status', 'Message'
-    ]
-    
-    const csvContent = [
-      headers.join(','),
-      ...submissions.map(sub => [
-        new Date(sub.created_at).toLocaleDateString('en-GB'),
-        sub.name,
-        sub.email,
-        sub.phone || '',
-        sub.event_type || '',
-        sub.event_date || '',
-        sub.guest_count || '',
-        sub.budget_range || '',
-        sub.status,
-        `"${(sub.message || '').replace(/"/g, '""')}"`
-      ].join(','))
-    ].join('\n')
-
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
-    const link = document.createElement('a')
-    const url = URL.createObjectURL(blob)
-    link.setAttribute('href', url)
-    link.setAttribute('download', `submissions_${new Date().toISOString().split('T')[0]}.csv`)
-    link.style.visibility = 'hidden'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+  // Export data to PDF
+  const exportToPDF = () => {
+    try {
+      // Create new PDF document
+      const doc = new jsPDF()
+      
+      // Add company header
+      doc.setFontSize(20)
+      doc.setTextColor(217, 123, 21) // Gold color
+      doc.text('TVS Event Center - Contact Submissions', 20, 20)
+      
+      // Add generation date
+      doc.setFontSize(10)
+      doc.setTextColor(100)
+      const currentDate = new Date().toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit', 
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      })
+      doc.text(`Generated on: ${currentDate}`, 20, 30)
+      
+      // Add summary statistics
+      doc.setFontSize(12)
+      doc.setTextColor(0)
+      doc.text(`Total Submissions: ${submissions.length}`, 20, 45)
+      
+      const newCount = submissions.filter(s => s.status === 'New').length
+      const contactedCount = submissions.filter(s => s.status === 'Contacted').length
+      const convertedCount = submissions.filter(s => s.status === 'Converted').length
+      
+      doc.text(`New: ${newCount} | Contacted: ${contactedCount} | Converted: ${convertedCount}`, 20, 55)
+      
+      // Filter submissions based on current filters
+      const filteredSubmissions = submissions.filter(submission => {
+        const statusMatch = filters.status === 'all' || submission.status === filters.status
+        const startDateMatch = !filters.startDate || new Date(submission.created_at) >= new Date(filters.startDate)
+        const endDateMatch = !filters.endDate || new Date(submission.created_at) <= new Date(filters.endDate)
+        return statusMatch && startDateMatch && endDateMatch
+      })
+      
+      // Prepare data for table
+      const tableData = filteredSubmissions.map(submission => [
+        submission.name || 'N/A',
+        submission.email || 'N/A',
+        submission.phone || 'N/A',
+        submission.event_type || 'N/A',
+        submission.event_date ? new Date(submission.event_date).toLocaleDateString('en-US') : 'N/A',
+        submission.guest_count || 'N/A',
+        submission.budget_range || 'N/A',
+        submission.status || 'New',
+        submission.created_at ? new Date(submission.created_at).toLocaleDateString('en-US') : 'N/A'
+      ])
+      
+      // Add table
+      doc.autoTable({
+        head: [['Name', 'Email', 'Phone', 'Event Type', 'Event Date', 'Guests', 'Budget', 'Status', 'Submitted']],
+        body: tableData,
+        startY: 65,
+        styles: {
+          fontSize: 8,
+          cellPadding: 2,
+          overflow: 'linebreak',
+          font: 'helvetica'
+        },
+        headStyles: {
+          fillColor: [217, 123, 21], // Gold color
+          textColor: 255,
+          fontStyle: 'bold',
+          fontSize: 9
+        },
+        alternateRowStyles: {
+          fillColor: [249, 250, 251] // Light gray
+        },
+        columnStyles: {
+          0: { cellWidth: 25 }, // Name
+          1: { cellWidth: 35 }, // Email  
+          2: { cellWidth: 20 }, // Phone
+          3: { cellWidth: 20 }, // Event Type
+          4: { cellWidth: 18 }, // Event Date
+          5: { cellWidth: 12 }, // Guests
+          6: { cellWidth: 20 }, // Budget
+          7: { cellWidth: 15 }, // Status
+          8: { cellWidth: 18 }  // Submitted
+        },
+        margin: { top: 65, left: 20, right: 20 },
+        theme: 'striped'
+      })
+      
+      // Add footer
+      const pageCount = doc.internal.getNumberOfPages()
+      for (let i = 1; i <= pageCount; i++) {
+        doc.setPage(i)
+        doc.setFontSize(8)
+        doc.setTextColor(100)
+        doc.text(`TVS Event Center | Page ${i} of ${pageCount}`, 20, doc.internal.pageSize.height - 10)
+        doc.text('Confidential - For Internal Use Only', doc.internal.pageSize.width - 70, doc.internal.pageSize.height - 10)
+      }
+      
+      // Generate filename with current date
+      const fileName = `TVS-Event-Center-Leads-${new Date().toISOString().split('T')[0]}.pdf`
+      
+      // Save the PDF
+      doc.save(fileName)
+      
+      console.log('PDF exported successfully!')
+      
+    } catch (error) {
+      console.error('Error generating PDF:', error)
+      alert('Error generating PDF. Please try again.')
+    }
   }
 
   useEffect(() => {
@@ -328,11 +410,11 @@ const AdminDashboard = () => {
             </div>
 
             <button
-              onClick={exportToCSV}
-              className="flex items-center space-x-2 bg-gold-500 hover:bg-gold-600 text-white px-4 py-2 rounded-lg transition-colors duration-300"
+              onClick={exportToPDF}
+              className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors duration-300"
             >
               <Download className="w-4 h-4" />
-              <span>Export CSV</span>
+              <span>Export PDF</span>
             </button>
           </div>
         </div>

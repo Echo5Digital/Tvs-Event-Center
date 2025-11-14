@@ -70,11 +70,15 @@ export async function getContactSubmissions(filters = {}) {
     }
     
     if (filters.startDate) {
-      query = query.gte('created_at', filters.startDate)
+      // Convert date to start of day in UTC
+      const startDate = new Date(filters.startDate + 'T00:00:00')
+      query = query.gte('created_at', startDate.toISOString())
     }
     
     if (filters.endDate) {
-      query = query.lte('created_at', filters.endDate)
+      // Convert date to end of day in UTC
+      const endDate = new Date(filters.endDate + 'T23:59:59.999')
+      query = query.lte('created_at', endDate.toISOString())
     }
 
     const { data, error } = await query

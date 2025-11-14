@@ -107,7 +107,7 @@ const AdminDashboard = () => {
     const csvContent = [
       headers.join(','),
       ...submissions.map(sub => [
-        new Date(sub.created_at).toLocaleDateString(),
+        new Date(sub.created_at).toLocaleDateString('en-GB'),
         sub.name,
         sub.email,
         sub.phone || '',
@@ -400,7 +400,7 @@ const AdminDashboard = () => {
                           )}
                           {submission.event_date && (
                             <div className="text-sm text-gray-500">
-                              {new Date(submission.event_date).toLocaleDateString()}
+                              {new Date(submission.event_date).toLocaleDateString('en-GB')}
                             </div>
                           )}
                           {submission.guest_count && (
@@ -422,7 +422,7 @@ const AdminDashboard = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(submission.created_at).toLocaleDateString()}
+                        {new Date(submission.created_at).toLocaleDateString('en-GB')}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
                         <button
@@ -493,7 +493,7 @@ const AdminDashboard = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Event Date</label>
                   <p className="mt-1 text-sm text-gray-900">
-                    {selectedSubmission.event_date ? new Date(selectedSubmission.event_date).toLocaleDateString() : 'Not specified'}
+                    {selectedSubmission.event_date ? new Date(selectedSubmission.event_date).toLocaleDateString('en-GB') : 'Not specified'}
                   </p>
                 </div>
                 <div>
@@ -525,11 +525,11 @@ const AdminDashboard = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-500">
                 <div>
                   <label className="block font-medium">Submitted</label>
-                  <p>{new Date(selectedSubmission.created_at).toLocaleString()}</p>
+                  <p>{new Date(selectedSubmission.created_at).toLocaleString('en-GB')}</p>
                 </div>
                 <div>
                   <label className="block font-medium">Last Updated</label>
-                  <p>{new Date(selectedSubmission.updated_at).toLocaleString()}</p>
+                  <p>{selectedSubmission.updated_at ? new Date(selectedSubmission.updated_at).toLocaleString('en-GB') : 'Never'}</p>
                 </div>
               </div>
             </div>

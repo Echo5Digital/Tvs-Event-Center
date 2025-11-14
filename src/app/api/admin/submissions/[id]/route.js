@@ -2,7 +2,7 @@ import { updateSubmissionStatus } from '@/lib/supabase'
 
 export async function PATCH(request, { params }) {
   try {
-    const { id } = params
+    const { id } = await params
     const { status } = await request.json()
 
     if (!status || !['new', 'contacted', 'converted', 'archived'].includes(status)) {

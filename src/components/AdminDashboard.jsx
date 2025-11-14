@@ -9,8 +9,8 @@ import dynamic from 'next/dynamic'
 // Dynamically import jsPDF to avoid SSR issues
 const loadJsPDF = async () => {
   const jsPDF = (await import('jspdf')).default
-  await import('jspdf-autotable')
-  return jsPDF
+  const autoTable = (await import('jspdf-autotable')).default
+  return { jsPDF, autoTable }
 }
 import { 
   Users, 
@@ -111,7 +111,7 @@ const AdminDashboard = () => {
   const exportToPDF = async () => {
     try {
       // Dynamically load jsPDF to avoid SSR issues
-      const jsPDF = await loadJsPDF()
+      const { jsPDF } = await loadJsPDF()
       
       // Create new PDF document
       const doc = new jsPDF()
@@ -170,39 +170,54 @@ const AdminDashboard = () => {
         submission.created_at ? new Date(submission.created_at).toLocaleDateString('en-US') : 'N/A'
       ])
       
-      // Add table
-      doc.autoTable({
-        head: [['Name', 'Email', 'Phone', 'Event Type', 'Event Date', 'Guests', 'Budget', 'Status', 'Submitted']],
-        body: tableData,
-        startY: 65,
-        styles: {
-          fontSize: 8,
-          cellPadding: 2,
-          overflow: 'linebreak',
-          font: 'helvetica'
-        },
-        headStyles: {
-          fillColor: [217, 123, 21], // Gold color
-          textColor: 255,
-          fontStyle: 'bold',
-          fontSize: 9
-        },
-        alternateRowStyles: {
-          fillColor: [249, 250, 251] // Light gray
-        },
-        columnStyles: {
-          0: { cellWidth: 25 }, // Name
-          1: { cellWidth: 35 }, // Email  
-          2: { cellWidth: 20 }, // Phone
-          3: { cellWidth: 20 }, // Event Type
-          4: { cellWidth: 18 }, // Event Date
-          5: { cellWidth: 12 }, // Guests
-          6: { cellWidth: 20 }, // Budget
-          7: { cellWidth: 15 }, // Status
-          8: { cellWidth: 18 }  // Submitted
-        },
-        margin: { top: 65, left: 20, right: 20 },
-        theme: 'striped'
+      // Create manual table since autoTable might have issues
+      let yPosition = 70
+      const pageHeight = doc.internal.pageSize.height
+      const lineHeight = 6
+      
+      // Table headers
+      doc.setFillColor(217, 123, 21) // Gold color
+      doc.rect(20, yPosition, 170, 8, 'F')
+      doc.setTextColor(255, 255, 255)
+      doc.setFontSize(9)
+      doc.setFont('helvetica', 'bold')
+      
+      const headers = ['Name', 'Email', 'Phone', 'Event', 'Date', 'Guests', 'Budget', 'Status', 'Submitted']
+      const columnWidths = [25, 35, 20, 20, 18, 12, 20, 15, 18]
+      let xPosition = 20
+      
+      headers.forEach((header, index) => {
+        doc.text(header, xPosition + 2, yPosition + 5)
+        xPosition += columnWidths[index]
+      })
+      
+      yPosition += 8
+      doc.setTextColor(0, 0, 0)
+      doc.setFont('helvetica', 'normal')
+      doc.setFontSize(8)
+      
+      // Table rows
+      tableData.forEach((row, rowIndex) => {
+        // Check if we need a new page
+        if (yPosition > pageHeight - 30) {
+          doc.addPage()
+          yPosition = 30
+        }
+        
+        // Alternate row colors
+        if (rowIndex % 2 === 0) {
+          doc.setFillColor(249, 250, 251)
+          doc.rect(20, yPosition, 170, lineHeight, 'F')
+        }
+        
+        xPosition = 20
+        row.forEach((cell, cellIndex) => {
+          const cellText = String(cell).length > 15 ? String(cell).substring(0, 15) + '...' : String(cell)
+          doc.text(cellText, xPosition + 2, yPosition + 4)
+          xPosition += columnWidths[cellIndex]
+        })
+        
+        yPosition += lineHeight
       })
       
       // Add footer

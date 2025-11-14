@@ -47,6 +47,27 @@ export async function POST(request) {
 
     console.log('Uploading to Supabase Storage:', filename)
 
+    // First, ensure the bucket exists and is properly configured
+    const { data: buckets, error: bucketsError } = await supabase.storage.listBuckets()
+    const blogImagesBucket = buckets?.find(bucket => bucket.name === 'blog-images')
+
+    if (!blogImagesBucket) {
+      console.log('Creating blog-images bucket...')
+      const { error: bucketError } = await supabase.storage.createBucket('blog-images', {
+        public: true,
+        allowedMimeTypes: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'],
+        fileSizeLimit: 5242880 // 5MB
+      })
+
+      if (bucketError) {
+        console.error('Failed to create bucket:', bucketError)
+        return NextResponse.json({ 
+          error: 'Storage bucket creation failed', 
+          details: bucketError.message 
+        }, { status: 500 })
+      }
+    }
+
     // Upload to Supabase Storage
     const { data, error } = await supabase.storage
       .from('blog-images')
@@ -58,51 +79,11 @@ export async function POST(request) {
 
     if (error) {
       console.error('Supabase storage error:', error)
-      
-      // If bucket doesn't exist, try to create it
-      if (error.message.includes('Bucket not found')) {
-        console.log('Creating blog-images bucket...')
-        const { error: bucketError } = await supabase.storage.createBucket('blog-images', {
-          public: true,
-          allowedMimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
-          fileSizeLimit: 5242880 // 5MB
-        })
-
-        if (bucketError) {
-          console.error('Failed to create bucket:', bucketError)
-          return NextResponse.json({ 
-            error: 'Storage bucket creation failed', 
-            details: bucketError.message 
-          }, { status: 500 })
-        }
-
-        // Retry upload after creating bucket
-        const { data: retryData, error: retryError } = await supabase.storage
-          .from('blog-images')
-          .upload(filename, buffer, {
-            contentType: file.type,
-            cacheControl: '3600',
-            upsert: false
-          })
-
-        if (retryError) {
-          console.error('Retry upload failed:', retryError)
-          return NextResponse.json({ 
-            error: 'Upload failed after bucket creation', 
-            details: retryError.message 
-          }, { status: 500 })
-        }
-
-        console.log('Upload successful after bucket creation:', retryData)
-      } else {
-        return NextResponse.json({ 
-          error: 'Upload to storage failed', 
-          details: error.message 
-        }, { status: 500 })
-      }
-    }
-
-    // Get public URL
+      return NextResponse.json({ 
+        error: 'Upload to storage failed', 
+        details: error.message 
+      }, { status: 500 })
+    }    // Get public URL
     const { data: publicUrlData } = supabase.storage
       .from('blog-images')
       .getPublicUrl(filename)

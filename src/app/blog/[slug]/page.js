@@ -3,25 +3,62 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import RelatedPosts from '@/components/RelatedPosts'
 import BlogPostClient from '@/components/BlogPostClient'
+import { createClient } from '@supabase/supabase-js'
+
+// Create Supabase client (using anon key for public access)
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+)
 
 async function getPost(slug) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
-                   'http://localhost:3000'
+    console.log('Fetching blog post with slug:', slug)
     
-    const response = await fetch(`${baseUrl}/api/blog/${slug}`, {
-      cache: 'no-store'
-    })
-    
-    console.log('Fetching from:', `${baseUrl}/api/blog/${slug}`)
-    console.log('Response status:', response.status)
-    
-    if (!response.ok) {
-      console.error('Response not ok:', response.status, response.statusText)
+    const { data: post, error } = await supabase
+      .from('blogs')
+      .select('*')
+      .eq('slug', slug)
+      .eq('status', 'published')
+      .single()
+
+    if (error || !post) {
+      console.error('Supabase error:', error)
       return null
     }
-    return await response.json()
+
+    // Calculate read time
+    const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length
+    const readTime = Math.ceil(wordCount / 200)
+
+    // Format the post data to match the expected structure
+    return {
+      id: post.id,
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt,
+      content: post.content,
+      author: post.author,
+      authorRole: post.author_role,
+      category: post.category,
+      tags: post.tags || [],
+      featuredImage: post.featured_image,
+      images: post.images || [],
+      metaTitle: post.meta_title,
+      metaDescription: post.meta_description,
+      canonicalUrl: post.canonical_url,
+      ogTitle: post.og_title,
+      ogDescription: post.og_description,
+      ogImage: post.og_image,
+      twitterTitle: post.twitter_title,
+      twitterDescription: post.twitter_description,
+      twitterImage: post.twitter_image,
+      jsonLd: post.json_ld,
+      featured: post.featured,
+      publishedAt: post.published_at,
+      createdAt: post.created_at,
+      readTime
+    }
   } catch (error) {
     console.error('Error fetching post:', error)
     return null
@@ -30,18 +67,31 @@ async function getPost(slug) {
 
 async function getRelatedPosts(category, currentPostId) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
-                   'http://localhost:3000'
-    
-    const response = await fetch(`${baseUrl}/api/blog?category=${encodeURIComponent(category)}&limit=3`, {
-      cache: 'no-store'
-    })
-    if (!response.ok) {
+    const { data: posts, error } = await supabase
+      .from('blogs')
+      .select('id, title, slug, excerpt, author, author_role, category, featured_image, published_at, created_at')
+      .eq('status', 'published')
+      .eq('category', category)
+      .neq('id', currentPostId)
+      .limit(3)
+
+    if (error) {
+      console.error('Error fetching related posts:', error)
       return []
     }
-    const posts = await response.json()
-    return posts.filter(post => post.id !== currentPostId).slice(0, 3)
+
+    return (posts || []).map(post => ({
+      id: post.id,
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt,
+      author: post.author,
+      authorRole: post.author_role,
+      category: post.category,
+      featuredImage: post.featured_image,
+      publishedAt: post.published_at,
+      createdAt: post.created_at
+    }))
   } catch (error) {
     console.error('Error fetching related posts:', error)
     return []
@@ -50,18 +100,17 @@ async function getRelatedPosts(category, currentPostId) {
 
 async function getAllPostSlugs() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
-                   'http://localhost:3000'
-    
-    const response = await fetch(`${baseUrl}/api/blog?limit=1000`, {
-      cache: 'no-store'
-    })
-    if (!response.ok) {
+    const { data: posts, error } = await supabase
+      .from('blogs')
+      .select('slug')
+      .eq('status', 'published')
+
+    if (error) {
+      console.error('Error fetching post slugs:', error)
       return []
     }
-    const posts = await response.json()
-    return posts.map(post => ({ slug: post.slug }))
+
+    return (posts || []).map(post => ({ slug: post.slug }))
   } catch (error) {
     console.error('Error fetching post slugs:', error)
     return []

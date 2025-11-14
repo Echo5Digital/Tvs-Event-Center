@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import BlogManagement from './BlogManagement'
+import AdminCalendar from './AdminCalendar'
 import { 
   Users, 
   Mail, 
@@ -44,6 +45,7 @@ const AdminDashboard = () => {
   // Tab configuration
   const tabs = [
     { id: 'dashboard', label: 'Dashboard', icon: BarChart3 },
+    { id: 'calendar', label: 'Calendar Management', icon: Calendar },
     { id: 'blog', label: 'Blog Management', icon: FileText }
   ]
 
@@ -453,6 +455,8 @@ const AdminDashboard = () => {
           </div>
         </div>
           </div>
+        ) : activeTab === 'calendar' ? (
+          <AdminCalendar />
         ) : activeTab === 'blog' ? (
           <BlogManagement />
         ) : null}

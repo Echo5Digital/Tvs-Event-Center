@@ -233,7 +233,9 @@ const BlogManagement = () => {
 
   // Handle image upload
   const handleImageUpload = async (file, field) => {
+    console.log('Starting image upload for field:', field, 'File:', file.name)
     setUploading(true)
+    
     const formData = new FormData()
     formData.append('file', file)
 
@@ -243,15 +245,24 @@ const BlogManagement = () => {
         body: formData,
       })
 
+      console.log('Upload response status:', response.status)
+
       if (response.ok) {
         const data = await response.json()
+        console.log('Upload success, data:', data)
         setFormData(prev => ({
           ...prev,
           [field]: data.url
         }))
+        alert('Image uploaded successfully!')
+      } else {
+        const errorData = await response.json()
+        console.error('Upload failed:', errorData)
+        alert(`Upload failed: ${errorData.error}`)
       }
     } catch (error) {
       console.error('Error uploading image:', error)
+      alert(`Upload error: ${error.message}`)
     } finally {
       setUploading(false)
     }

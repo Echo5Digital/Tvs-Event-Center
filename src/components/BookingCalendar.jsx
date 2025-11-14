@@ -70,12 +70,12 @@ const BookingCalendar = ({ selectedDate, onDateSelect, className = '' }) => {
   const getDateClass = (date) => {
     if (!date) return ''
     
-    let classes = 'w-10 h-10 flex items-center justify-center text-sm rounded-lg transition-all duration-200 font-semibold '
+    let classes = 'w-8 h-8 flex items-center justify-center text-xs rounded-lg transition-all duration-200 font-semibold '
     
     if (isPastDate(date)) {
       classes += 'text-gray-300 cursor-not-allowed '
     } else if (isDateOccupied(date, occupiedDates)) {
-      classes += 'bg-red-100 text-red-700 cursor-not-allowed border border-red-300 '
+      classes += 'bg-red-100 text-red-700 cursor-not-allowed border border-red-300 relative '
     } else {
       classes += 'bg-white text-gray-700 border border-gray-200 hover:bg-green-50 hover:border-green-300 cursor-pointer '
       
@@ -85,7 +85,7 @@ const BookingCalendar = ({ selectedDate, onDateSelect, className = '' }) => {
     }
     
     if (selectedDate && isSameDay(date, selectedDate)) {
-      classes += 'ring-2 ring-amber-500 ring-offset-2 bg-amber-50 border-amber-300 text-amber-800 '
+      classes += 'ring-2 ring-amber-500 ring-offset-1 bg-amber-50 border-amber-300 text-amber-800 '
     }
     
     return classes
@@ -121,47 +121,47 @@ const BookingCalendar = ({ selectedDate, onDateSelect, className = '' }) => {
   }
 
   return (
-    <div className={`bg-white rounded-lg border border-gray-200 p-6 ${className}`}>
+    <div className={`bg-white rounded-lg border border-gray-200 p-4 ${className}`}>
       {/* Header */}
-      <div className="flex items-center space-x-3 mb-6">
-        <CalendarIcon className="w-6 h-6 text-amber-600" />
-        <h3 className="text-lg font-bold text-gray-900">Select Event Date</h3>
+      <div className="flex items-center space-x-3 mb-4">
+        <CalendarIcon className="w-5 h-5 text-amber-600" />
+        <h3 className="text-base font-bold text-gray-900">Select Event Date</h3>
       </div>
 
       {/* Calendar Navigation */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4">
         <button
           onClick={() => navigateMonth(-1)}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
         >
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
+          <ChevronLeft className="w-4 h-4 text-gray-600" />
         </button>
         
-        <h4 className="text-lg font-semibold text-gray-900">
+        <h4 className="text-base font-semibold text-gray-900">
           {MONTH_NAMES[currentMonth]} {currentYear}
         </h4>
         
         <button
           onClick={() => navigateMonth(1)}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
         >
-          <ChevronRight className="w-5 h-5 text-gray-600" />
+          <ChevronRight className="w-4 h-4 text-gray-600" />
         </button>
       </div>
 
       {/* Calendar Grid */}
-      <div className="mb-6">
+      <div className="mb-4">
         {/* Day Headers */}
-        <div className="grid grid-cols-7 gap-2 mb-2">
+        <div className="grid grid-cols-7 gap-1 mb-2">
           {DAY_NAMES.map(day => (
-            <div key={day} className="text-center text-sm font-semibold text-gray-500 py-2">
+            <div key={day} className="text-center text-xs font-semibold text-gray-500 py-1">
               {day}
             </div>
           ))}
         </div>
 
         {/* Calendar Days */}
-        <div className="grid grid-cols-7 gap-2">
+        <div className="grid grid-cols-7 gap-1">
           {calendarGrid.map((date, index) => (
             <div key={index} className="flex justify-center">
               {date ? (
@@ -173,14 +173,21 @@ const BookingCalendar = ({ selectedDate, onDateSelect, className = '' }) => {
                     isPastDate(date) 
                       ? 'Past date' 
                       : isDateOccupied(date, occupiedDates) 
-                      ? 'Date not available' 
+                      ? 'Date not available - Already booked' 
                       : 'Click to select this date'
                   }
                 >
-                  {date.getDate()}
+                  <span className="relative">
+                    {date.getDate()}
+                    {isDateOccupied(date, occupiedDates) && (
+                      <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full text-[6px] flex items-center justify-center text-white font-bold">
+                        ×
+                      </span>
+                    )}
+                  </span>
                 </button>
               ) : (
-                <div className="w-10 h-10"></div>
+                <div className="w-8 h-8"></div>
               )}
             </div>
           ))}
@@ -192,13 +199,13 @@ const BookingCalendar = ({ selectedDate, onDateSelect, className = '' }) => {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-amber-50 rounded-lg p-4 border-l-4 border-amber-500"
+          className="bg-amber-50 rounded-lg p-3 border-l-4 border-amber-500 mb-3"
         >
-          <div className="flex items-center space-x-3">
-            <CalendarIcon className="w-5 h-5 text-amber-600" />
+          <div className="flex items-center space-x-2">
+            <CalendarIcon className="w-4 h-4 text-amber-600" />
             <div>
-              <p className="font-semibold text-gray-900">Selected Date:</p>
-              <p className="text-amber-800 font-semibold">
+              <p className="text-sm font-semibold text-gray-900">Selected:</p>
+              <p className="text-amber-800 font-semibold text-sm">
                 {selectedDate.toLocaleDateString('en-GB', { 
                   weekday: 'long', 
                   year: 'numeric', 
@@ -212,33 +219,33 @@ const BookingCalendar = ({ selectedDate, onDateSelect, className = '' }) => {
       )}
 
       {/* Legend */}
-      <div className="flex flex-wrap items-center justify-center gap-4 text-sm mt-6 p-4 bg-gray-50 rounded-lg">
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-white border border-gray-200 rounded"></div>
+      <div className="flex flex-wrap items-center justify-center gap-3 text-xs p-3 bg-gray-50 rounded-lg">
+        <div className="flex items-center space-x-1">
+          <div className="w-2 h-2 bg-white border border-gray-200 rounded"></div>
           <span className="text-gray-600 font-medium">Available</span>
         </div>
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-red-100 border border-red-300 rounded"></div>
-          <span className="text-gray-600 font-medium">Not Available</span>
+        <div className="flex items-center space-x-1">
+          <div className="w-2 h-2 bg-red-100 border border-red-300 rounded"></div>
+          <span className="text-gray-600 font-medium">Occupied</span>
         </div>
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-blue-50 border border-blue-400 rounded"></div>
+        <div className="flex items-center space-x-1">
+          <div className="w-2 h-2 bg-blue-50 border border-blue-400 rounded"></div>
           <span className="text-gray-600 font-medium">Today</span>
         </div>
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-amber-50 border border-amber-300 rounded ring-1 ring-amber-500"></div>
+        <div className="flex items-center space-x-1">
+          <div className="w-2 h-2 bg-amber-50 border border-amber-300 rounded ring-1 ring-amber-500"></div>
           <span className="text-gray-600 font-medium">Selected</span>
         </div>
       </div>
 
       {/* Info Message */}
-      <div className="mt-4 bg-blue-50 rounded-lg p-4">
-        <div className="flex items-start space-x-3">
-          <Info className="w-5 h-5 text-blue-600 mt-0.5" />
+      <div className="mt-3 bg-blue-50 rounded-lg p-3">
+        <div className="flex items-start space-x-2">
+          <Info className="w-4 h-4 text-blue-600 mt-0.5" />
           <div>
-            <p className="text-sm font-semibold text-blue-900">Booking Information:</p>
-            <p className="text-sm text-blue-800 mt-1 font-medium">
-              Select an available date for your event. Red dates are already booked and cannot be selected.
+            <p className="text-xs font-semibold text-blue-900">Booking Info:</p>
+            <p className="text-xs text-blue-800 mt-1 font-medium">
+              Red dates are occupied and cannot be selected. Choose any available date.
             </p>
           </div>
         </div>

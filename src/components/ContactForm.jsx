@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, Phone, Mail, MapPin, Clock, CheckCircle, Calendar } from 'lucide-react'
+import BookingCalendar from './BookingCalendar'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const ContactForm = () => {
     budgetRange: '',
     message: ''
   })
+  const [selectedDate, setSelectedDate] = useState(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState('')
@@ -51,6 +53,15 @@ const ContactForm = () => {
     }))
   }
 
+  const handleDateSelect = (date) => {
+    setSelectedDate(date)
+    const dateString = date ? date.toISOString().split('T')[0] : ''
+    setFormData(prev => ({
+      ...prev,
+      eventDate: dateString
+    }))
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -79,6 +90,7 @@ const ContactForm = () => {
           budgetRange: '',
           message: ''
         })
+        setSelectedDate(null)
       }, 3000)
     } catch (error) {
       console.error(error)
@@ -245,23 +257,16 @@ const ContactForm = () => {
                     transition={{ duration: 0.4 }}
                     className="mt-4 space-y-6"
                   >
+                    {/* Calendar Section - Full Width */}
+                    <div className="mb-6">
+                      <BookingCalendar 
+                        selectedDate={selectedDate}
+                        onDateSelect={handleDateSelect}
+                        className="mb-4"
+                      />
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Event Date
-                        </label>
-                        <input
-                          type="date"
-                          name="eventDate"
-                          value={formData.eventDate}
-                          onChange={handleInputChange}
-                          min={today}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent"
-                        />
-                        <p className="text-xs text-red-500 mt-1">
-                          Past dates are disabled.
-                        </p>
-                      </div>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">

@@ -55,7 +55,10 @@ const ContactForm = () => {
 
   const handleDateSelect = (date) => {
     setSelectedDate(date)
-    const dateString = date ? date.toISOString().split('T')[0] : ''
+    // Format date in local timezone to avoid timezone shift issues
+    const dateString = date ? 
+      `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}` 
+      : ''
     setFormData(prev => ({
       ...prev,
       eventDate: dateString

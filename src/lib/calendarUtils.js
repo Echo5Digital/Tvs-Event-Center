@@ -1,10 +1,11 @@
 // Utility functions for calendar date management
 
-// Format date to YYYY-MM-DD string
+// Format date to YYYY-MM-DD string (timezone-safe)
 export const formatDateToString = (date) => {
   if (!date) return ''
   const d = new Date(date)
-  return d.toISOString().split('T')[0]
+  // Use local timezone to avoid date shifting
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 }
 
 // Parse date string to Date object

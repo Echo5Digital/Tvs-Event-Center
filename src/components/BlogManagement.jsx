@@ -209,6 +209,28 @@ const BlogManagement = () => {
     }
   }
 
+  // Update post status
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      const response = await fetch(`/api/admin/blog/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus }),
+      })
+
+      if (response.ok) {
+        await fetchPosts()
+      } else {
+        alert('Failed to update post status')
+      }
+    } catch (error) {
+      console.error('Error updating post status:', error)
+      alert('Failed to update post status')
+    }
+  }
+
   // Handle image upload
   const handleImageUpload = async (file, field) => {
     setUploading(true)
@@ -411,28 +433,42 @@ const BlogManagement = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {new Date(post.createdAt).toLocaleDateString()}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm space-x-2">
-                          <button
-                            onClick={() => handleEdit(post)}
-                            className="text-amber-600 hover:text-amber-900"
-                            title="Edit"
-                          >
-                            <Edit3 className="w-4 h-4" />
-                          </button>
-                          <button
-                            onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
-                            className="text-blue-600 hover:text-blue-900"
-                            title="View"
-                          >
-                            <Eye className="w-4 h-4" />
-                          </button>
-                          <button
-                            onClick={() => handleDelete(post.id)}
-                            className="text-red-600 hover:text-red-900"
-                            title="Delete"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center space-x-2">
+                            {/* Status Dropdown */}
+                            <select
+                              value={post.status}
+                              onChange={(e) => handleStatusChange(post.id, e.target.value)}
+                              className="text-xs border border-gray-300 rounded px-2 py-1 bg-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                            >
+                              <option value="draft">Draft</option>
+                              <option value="published">Published</option>
+                              <option value="archived">Archived</option>
+                            </select>
+                            
+                            {/* Action Buttons */}
+                            <button
+                              onClick={() => handleEdit(post)}
+                              className="text-amber-600 hover:text-amber-900 p-1"
+                              title="Edit"
+                            >
+                              <Edit3 className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => window.open(`/blog/${post.slug}`, '_blank')}
+                              className="text-blue-600 hover:text-blue-900 p-1"
+                              title="View"
+                            >
+                              <Eye className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => handleDelete(post.id)}
+                              className="text-red-600 hover:text-red-900 p-1"
+                              title="Delete"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}

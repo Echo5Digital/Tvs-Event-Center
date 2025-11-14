@@ -6,10 +6,19 @@ import BlogPostClient from '@/components/BlogPostClient'
 
 async function getPost(slug) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog/${slug}`, {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
+                   'http://localhost:3000'
+    
+    const response = await fetch(`${baseUrl}/api/blog/${slug}`, {
       cache: 'no-store'
     })
+    
+    console.log('Fetching from:', `${baseUrl}/api/blog/${slug}`)
+    console.log('Response status:', response.status)
+    
     if (!response.ok) {
+      console.error('Response not ok:', response.status, response.statusText)
       return null
     }
     return await response.json()
@@ -21,7 +30,11 @@ async function getPost(slug) {
 
 async function getRelatedPosts(category, currentPostId) {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog?category=${encodeURIComponent(category)}&limit=3`, {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
+                   'http://localhost:3000'
+    
+    const response = await fetch(`${baseUrl}/api/blog?category=${encodeURIComponent(category)}&limit=3`, {
       cache: 'no-store'
     })
     if (!response.ok) {
@@ -37,7 +50,11 @@ async function getRelatedPosts(category, currentPostId) {
 
 async function getAllPostSlugs() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/blog?limit=1000`, {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
+                   'http://localhost:3000'
+    
+    const response = await fetch(`${baseUrl}/api/blog?limit=1000`, {
       cache: 'no-store'
     })
     if (!response.ok) {

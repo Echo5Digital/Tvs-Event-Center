@@ -9,7 +9,10 @@ const supabase = createClient(
 
 export async function GET(request, { params }) {
   try {
-    const { slug } = await params
+    const resolvedParams = await params
+    const { slug } = resolvedParams
+
+    console.log('Fetching blog post with slug:', slug)
 
     const { data: post, error } = await supabase
       .from('blogs')

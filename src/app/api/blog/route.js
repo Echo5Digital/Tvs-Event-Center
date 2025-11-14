@@ -1,12 +1,11 @@
-import { PrismaClient } from '@prisma/client'
 import { NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
 
-// Use globalThis to prevent multiple Prisma instances in development
-const globalForPrisma = globalThis
-
-const prisma = globalForPrisma.prisma || new PrismaClient()
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+// Create Supabase client (using anon key for public access)
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+)
 
 // GET - Fetch published blog posts for public consumption
 export async function GET(request) {
@@ -17,37 +16,35 @@ export async function GET(request) {
     const search = searchParams.get('search')
     const limit = parseInt(searchParams.get('limit')) || 50
 
-    let where = {
-      status: 'published'
-    }
+    let query = supabase
+      .from('blogs')
+      .select('*')
+      .eq('status', 'published')
+      .order('featured', { ascending: false })
+      .order('published_at', { ascending: false })
+      .limit(limit)
     
     if (category && category !== 'all') {
-      where.category = category
+      query = query.eq('category', category)
     }
     
     if (featured === 'true') {
-      where.featured = true
+      query = query.eq('featured', true)
     }
 
     if (search) {
-      where.OR = [
-        { title: { contains: search, mode: 'insensitive' } },
-        { excerpt: { contains: search, mode: 'insensitive' } },
-        { author: { contains: search, mode: 'insensitive' } }
-      ]
+      query = query.or(`title.ilike.%${search}%,excerpt.ilike.%${search}%,author.ilike.%${search}%`)
     }
 
-    const posts = await prisma.blogPost.findMany({
-      where,
-      orderBy: [
-        { featured: 'desc' },
-        { publishedAt: 'desc' }
-      ],
-      take: limit
-    })
+    const { data: posts, error } = await query
 
-    // Parse JSON fields and calculate read time
-    const postsWithParsedFields = posts.map(post => {
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    // Calculate read time and format data
+    const postsWithParsedFields = (posts || []).map(post => {
       const wordCount = post.content.replace(/<[^>]*>/g, '').split(/\s+/).length
       const readTime = Math.ceil(wordCount / 200) // Average reading speed
 
@@ -58,14 +55,14 @@ export async function GET(request) {
         excerpt: post.excerpt,
         content: post.content,
         author: post.author,
-        authorRole: post.authorRole,
+        authorRole: post.author_role,
         category: post.category,
-        tags: post.tags ? JSON.parse(post.tags) : [],
-        featuredImage: post.featuredImage,
-        images: post.images ? JSON.parse(post.images) : [],
+        tags: post.tags || [],
+        featuredImage: post.featured_image,
+        images: post.images || [],
         featured: post.featured,
-        publishedAt: post.publishedAt?.toISOString(),
-        createdAt: post.createdAt.toISOString(),
+        publishedAt: post.published_at,
+        createdAt: post.created_at,
         readTime
       }
     })

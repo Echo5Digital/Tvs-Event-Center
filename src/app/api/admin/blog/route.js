@@ -1,13 +1,12 @@
-import { PrismaClient } from '@prisma/client'
 import { NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
 import slugify from 'slugify'
 
-// Use globalThis to prevent multiple Prisma instances in development
-const globalForPrisma = globalThis
-
-const prisma = globalForPrisma.prisma || new PrismaClient()
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+// Create Supabase client with service role key (server-side only)
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_KEY
+)
 
 // GET - Fetch all blog posts
 export async function GET(request) {
@@ -17,25 +16,28 @@ export async function GET(request) {
     const category = searchParams.get('category')
     const limit = parseInt(searchParams.get('limit')) || 50
 
-    let where = {}
-    
+    let query = supabase
+      .from('blogs')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(limit)
+
     if (status !== 'all') {
-      where.status = status
+      query = query.eq('status', status)
     }
     
     if (category) {
-      where.category = category
+      query = query.eq('category', category)
     }
 
-    const posts = await prisma.blogPost.findMany({
-      where,
-      orderBy: {
-        createdAt: 'desc'
-      },
-      take: limit
-    })
+    const { data, error } = await query
 
-    return NextResponse.json(posts)
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json(data || [])
   } catch (error) {
     console.error('Error fetching blog posts:', error)
     return NextResponse.json({ error: 'Failed to fetch blog posts' }, { status: 500 })
@@ -56,71 +58,53 @@ export async function POST(request) {
     const slug = slugify(body.title, { lower: true, strict: true })
     
     // Check if slug already exists
-    const existingPost = await prisma.blogPost.findUnique({
-      where: { slug }
-    })
+    const { data: existingPost } = await supabase
+      .from('blogs')
+      .select('id')
+      .eq('slug', slug)
+      .single()
     
     if (existingPost) {
       return NextResponse.json({ error: 'A post with this title already exists' }, { status: 400 })
     }
 
-    const post = await prisma.blogPost.create({
-      data: {
+    const { data, error } = await supabase
+      .from('blogs')
+      .insert({
         title: body.title,
         slug,
         excerpt: body.excerpt,
         content: body.content,
         author: body.author,
-        authorRole: body.authorRole,
+        author_role: body.authorRole,
         category: body.category,
-        tags: JSON.stringify(body.tags || []),
-        featuredImage: body.featuredImage,
-        images: JSON.stringify(body.images || []),
-        metaTitle: body.metaTitle,
-        metaDescription: body.metaDescription,
-        canonicalUrl: body.canonicalUrl,
-        ogTitle: body.ogTitle,
-        ogDescription: body.ogDescription,
-        ogImage: body.ogImage,
-        twitterTitle: body.twitterTitle,
-        twitterDescription: body.twitterDescription,
-        twitterImage: body.twitterImage,
-        jsonLd: body.jsonLd,
+        tags: body.tags || [],
+        featured_image: body.featuredImage,
+        images: body.images || [],
+        meta_title: body.metaTitle,
+        meta_description: body.metaDescription,
+        canonical_url: body.canonicalUrl,
+        og_title: body.ogTitle,
+        og_description: body.ogDescription,
+        og_image: body.ogImage,
+        twitter_title: body.twitterTitle,
+        twitter_description: body.twitterDescription,
+        twitter_image: body.twitterImage,
+        json_ld: body.jsonLd,
         status: body.status || 'draft',
         featured: body.featured || false,
-        publishedAt: body.status === 'published' ? new Date() : null
-      }
-    })
+        published_at: body.status === 'published' ? new Date().toISOString() : null
+      })
+      .select()
 
-    return NextResponse.json(post)
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json(data[0])
   } catch (error) {
     console.error('Error creating blog post:', error)
-    console.error('Error details:', {
-      name: error.name,
-      message: error.message,
-      code: error.code,
-      stack: error.stack
-    })
-    
-    // More specific error messages
-    if (error.code === 'P1001') {
-      return NextResponse.json({ 
-        error: 'Database connection failed. Please check your DATABASE_URL environment variable.' 
-      }, { status: 500 })
-    }
-    
-    if (error.code === 'P2002') {
-      return NextResponse.json({ 
-        error: 'A post with this title already exists.' 
-      }, { status: 400 })
-    }
-    
-    if (error.message.includes('relation') && error.message.includes('does not exist')) {
-      return NextResponse.json({ 
-        error: 'Database tables not initialized. Please run database migration.' 
-      }, { status: 500 })
-    }
-    
     return NextResponse.json({ 
       error: 'Failed to create blog post', 
       details: process.env.NODE_ENV === 'development' ? error.message : undefined
@@ -139,12 +123,12 @@ export async function PUT(request) {
       const slug = slugify(updateData.title, { lower: true, strict: true })
       
       // Check if new slug conflicts with existing posts (excluding current post)
-      const existingPost = await prisma.blogPost.findFirst({
-        where: { 
-          slug,
-          NOT: { id }
-        }
-      })
+      const { data: existingPost } = await supabase
+        .from('blogs')
+        .select('id')
+        .eq('slug', slug)
+        .neq('id', id)
+        .single()
       
       if (existingPost) {
         return NextResponse.json({ error: 'A post with this title already exists' }, { status: 400 })
@@ -153,32 +137,50 @@ export async function PUT(request) {
       updateData.slug = slug
     }
 
-    // Convert arrays to JSON strings
-    if (updateData.tags) {
-      updateData.tags = JSON.stringify(updateData.tags)
-    }
-    if (updateData.images) {
-      updateData.images = JSON.stringify(updateData.images)
-    }
-
-    // Update publishedAt if status changes to published
-    if (updateData.status === 'published') {
-      const currentPost = await prisma.blogPost.findUnique({
-        where: { id },
-        select: { publishedAt: true }
-      })
-      
-      if (!currentPost.publishedAt) {
-        updateData.publishedAt = new Date()
-      }
+    // Convert field names for Supabase
+    const supabaseData = {
+      ...updateData,
+      author_role: updateData.authorRole,
+      featured_image: updateData.featuredImage,
+      meta_title: updateData.metaTitle,
+      meta_description: updateData.metaDescription,
+      canonical_url: updateData.canonicalUrl,
+      og_title: updateData.ogTitle,
+      og_description: updateData.ogDescription,
+      og_image: updateData.ogImage,
+      twitter_title: updateData.twitterTitle,
+      twitter_description: updateData.twitterDescription,
+      twitter_image: updateData.twitterImage,
+      json_ld: updateData.jsonLd,
+      published_at: updateData.status === 'published' ? new Date().toISOString() : updateData.published_at
     }
 
-    const post = await prisma.blogPost.update({
-      where: { id },
-      data: updateData
-    })
+    // Remove old field names
+    delete supabaseData.authorRole
+    delete supabaseData.featuredImage
+    delete supabaseData.metaTitle
+    delete supabaseData.metaDescription
+    delete supabaseData.canonicalUrl
+    delete supabaseData.ogTitle
+    delete supabaseData.ogDescription
+    delete supabaseData.ogImage
+    delete supabaseData.twitterTitle
+    delete supabaseData.twitterDescription
+    delete supabaseData.twitterImage
+    delete supabaseData.jsonLd
 
-    return NextResponse.json(post)
+    const { data, error } = await supabase
+      .from('blogs')
+      .update(supabaseData)
+      .eq('id', id)
+      .select()
+
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json(data[0])
   } catch (error) {
     console.error('Error updating blog post:', error)
     return NextResponse.json({ error: 'Failed to update blog post' }, { status: 500 })
@@ -195,9 +197,15 @@ export async function DELETE(request) {
       return NextResponse.json({ error: 'Post ID is required' }, { status: 400 })
     }
 
-    await prisma.blogPost.delete({
-      where: { id }
-    })
+    const { error } = await supabase
+      .from('blogs')
+      .delete()
+      .eq('id', id)
+
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
 
     return NextResponse.json({ message: 'Blog post deleted successfully' })
   } catch (error) {

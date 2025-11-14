@@ -1,7 +1,7 @@
-import AdminDashboard from '@/components/AdminDashboard'
+import ProtectedAdminDashboard from '@/components/ProtectedAdminDashboard'
 
 export default function AdminPage() {
-  return <AdminDashboard />
+  return <ProtectedAdminDashboard />
 }
 
 export const metadata = {

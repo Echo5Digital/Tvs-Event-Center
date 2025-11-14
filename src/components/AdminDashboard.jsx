@@ -4,8 +4,14 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import BlogManagement from './BlogManagement'
 import AdminCalendar from './AdminCalendar'
-import jsPDF from 'jspdf'
-import 'jspdf-autotable'
+import dynamic from 'next/dynamic'
+
+// Dynamically import jsPDF to avoid SSR issues
+const loadJsPDF = async () => {
+  const jsPDF = (await import('jspdf')).default
+  await import('jspdf-autotable')
+  return jsPDF
+}
 import { 
   Users, 
   Mail, 
@@ -102,8 +108,11 @@ const AdminDashboard = () => {
   }
 
   // Export data to PDF
-  const exportToPDF = () => {
+  const exportToPDF = async () => {
     try {
+      // Dynamically load jsPDF to avoid SSR issues
+      const jsPDF = await loadJsPDF()
+      
       // Create new PDF document
       const doc = new jsPDF()
       
@@ -143,16 +152,21 @@ const AdminDashboard = () => {
         return statusMatch && startDateMatch && endDateMatch
       })
       
+      if (filteredSubmissions.length === 0) {
+        alert('No submissions found with current filters.')
+        return
+      }
+      
       // Prepare data for table
       const tableData = filteredSubmissions.map(submission => [
-        submission.name || 'N/A',
-        submission.email || 'N/A',
-        submission.phone || 'N/A',
-        submission.event_type || 'N/A',
+        String(submission.name || 'N/A'),
+        String(submission.email || 'N/A'),
+        String(submission.phone || 'N/A'),
+        String(submission.event_type || 'N/A'),
         submission.event_date ? new Date(submission.event_date).toLocaleDateString('en-US') : 'N/A',
-        submission.guest_count || 'N/A',
-        submission.budget_range || 'N/A',
-        submission.status || 'New',
+        String(submission.guest_count || 'N/A'),
+        String(submission.budget_range || 'N/A'),
+        String(submission.status || 'New'),
         submission.created_at ? new Date(submission.created_at).toLocaleDateString('en-US') : 'N/A'
       ])
       
@@ -211,7 +225,7 @@ const AdminDashboard = () => {
       
     } catch (error) {
       console.error('Error generating PDF:', error)
-      alert('Error generating PDF. Please try again.')
+      alert(`Error generating PDF: ${error.message || 'Unknown error'}. Please try again.`)
     }
   }
 

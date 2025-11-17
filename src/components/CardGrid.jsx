@@ -120,14 +120,7 @@ const CardGrid = ({ items, type = 'default', className = "" }) => {
           {venue.description}
         </p>
         
-        <div className="grid grid-cols-2 gap-4 mb-4 text-sm text-gray-600">
-          <div>
-            <span className="font-medium">Area:</span> {venue.area}
-          </div>
-          <div>
-            <span className="font-medium">Price:</span> {venue.priceRange}
-          </div>
-        </div>
+
         
         <div className="flex flex-wrap gap-2 mb-4">
           {venue.bestFor?.slice(0, 2).map((purpose, idx) => (
@@ -140,13 +133,7 @@ const CardGrid = ({ items, type = 'default', className = "" }) => {
           ))}
         </div>
         
-        <Link
-          href={`/venues/${venue.id}`}
-          className="inline-flex items-center text-gold-600 hover:text-gold-700 font-medium group"
-        >
-          View Details
-          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-        </Link>
+
       </div>
     </motion.div>
   )

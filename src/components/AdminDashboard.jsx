@@ -28,7 +28,8 @@ import {
   Eye,
   X,
   FileText,
-  BarChart3
+  BarChart3,
+  Trash2
 } from 'lucide-react'
 
 const AdminDashboard = () => {
@@ -49,6 +50,7 @@ const AdminDashboard = () => {
   })
   const [selectedSubmission, setSelectedSubmission] = useState(null)
   const [showModal, setShowModal] = useState(false)
+  const [deleteLoading, setDeleteLoading] = useState({})
 
   // Tab configuration
   const tabs = [
@@ -104,6 +106,37 @@ const AdminDashboard = () => {
       }
     } catch (error) {
       console.error('Error updating status:', error)
+    }
+  }
+
+  // Delete individual submission
+  const handleDeleteSubmission = async (submissionId) => {
+    if (!confirm('Are you sure you want to delete this contact submission? This action cannot be undone.')) {
+      return
+    }
+
+    setDeleteLoading(prev => ({ ...prev, [submissionId]: true }))
+
+    try {
+      const response = await fetch(`/api/admin/submissions/${submissionId}`, {
+        method: 'DELETE',
+      })
+
+      if (response.ok) {
+        // Remove the deleted submission from the state
+        setSubmissions(prev => prev.filter(submission => submission.id !== submissionId))
+        // Update stats
+        fetchData()
+        alert('Contact submission deleted successfully!')
+      } else {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to delete submission')
+      }
+    } catch (error) {
+      console.error('Error deleting submission:', error)
+      alert(`Failed to delete submission: ${error.message}`)
+    } finally {
+      setDeleteLoading(prev => ({ ...prev, [submissionId]: false }))
     }
   }
 
@@ -537,26 +570,41 @@ const AdminDashboard = () => {
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {new Date(submission.created_at).toLocaleDateString('en-GB')}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-2">
-                        <button
-                          onClick={() => {
-                            setSelectedSubmission(submission)
-                            setShowModal(true)
-                          }}
-                          className="text-gold-600 hover:text-gold-900"
-                        >
-                          <Eye className="w-4 h-4" />
-                        </button>
-                        <select
-                          value={submission.status}
-                          onChange={(e) => updateStatus(submission.id, e.target.value)}
-                          className="text-sm border border-gray-300 rounded px-2 py-1"
-                        >
-                          <option value="new">New</option>
-                          <option value="contacted">Contacted</option>
-                          <option value="converted">Converted</option>
-                          <option value="archived">Archived</option>
-                        </select>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <div className="flex items-center justify-end space-x-2">
+                          <button
+                            onClick={() => {
+                              setSelectedSubmission(submission)
+                              setShowModal(true)
+                            }}
+                            className="text-gold-600 hover:text-gold-900 p-1"
+                            title="View Details"
+                          >
+                            <Eye className="w-4 h-4" />
+                          </button>
+                          <select
+                            value={submission.status}
+                            onChange={(e) => updateStatus(submission.id, e.target.value)}
+                            className="text-sm border border-gray-300 rounded px-2 py-1"
+                          >
+                            <option value="new">New</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="converted">Converted</option>
+                            <option value="archived">Archived</option>
+                          </select>
+                          <button
+                            onClick={() => handleDeleteSubmission(submission.id)}
+                            disabled={deleteLoading[submission.id]}
+                            className="text-red-600 hover:text-red-900 disabled:text-red-400 disabled:cursor-not-allowed p-1"
+                            title="Delete Submission"
+                          >
+                            {deleteLoading[submission.id] ? (
+                              <div className="w-4 h-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
+                            ) : (
+                              <Trash2 className="w-4 h-4" />
+                            )}
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}

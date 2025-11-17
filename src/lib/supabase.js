@@ -167,3 +167,32 @@ export async function getSubmissionStats() {
     return { success: false, error: error.message }
   }
 }
+
+// Helper function to delete a contact submission
+export async function deleteContactSubmission(id) {
+  try {
+    if (!supabase) {
+      throw new Error('Supabase client not initialized')
+    }
+
+    const { data, error } = await supabase
+      .from('contact_submissions')
+      .delete()
+      .eq('id', id)
+      .select()
+
+    if (error) {
+      console.error('Supabase error:', error)
+      throw error
+    }
+
+    if (data.length === 0) {
+      throw new Error('Submission not found')
+    }
+
+    return { success: true, data }
+  } catch (error) {
+    console.error('Error deleting submission:', error)
+    return { success: false, error: error.message }
+  }
+}

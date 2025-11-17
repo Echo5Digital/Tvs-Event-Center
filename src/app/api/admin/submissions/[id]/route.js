@@ -1,4 +1,4 @@
-import { updateSubmissionStatus } from '@/lib/supabase'
+import { updateSubmissionStatus, deleteContactSubmission } from '@/lib/supabase'
 
 export async function PATCH(request, { params }) {
   try {
@@ -31,6 +31,41 @@ export async function PATCH(request, { params }) {
 
   } catch (error) {
     console.error('Update API Error:', error)
+    return Response.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    )
+  }
+}
+
+// DELETE - Delete individual submission
+export async function DELETE(request, { params }) {
+  try {
+    const { id } = await params
+
+    if (!id) {
+      return Response.json(
+        { error: 'Submission ID is required' },
+        { status: 400 }
+      )
+    }
+
+    const result = await deleteContactSubmission(id)
+    
+    if (!result.success) {
+      return Response.json(
+        { error: result.error },
+        { status: 500 }
+      )
+    }
+
+    return Response.json(
+      { message: 'Submission deleted successfully' },
+      { status: 200 }
+    )
+
+  } catch (error) {
+    console.error('DELETE Error:', error)
     return Response.json(
       { error: 'Internal server error' },
       { status: 500 }

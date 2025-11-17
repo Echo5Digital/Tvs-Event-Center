@@ -43,6 +43,8 @@ export async function DELETE(request, { params }) {
   try {
     const { id } = await params
 
+    console.log('DELETE request for ID:', id)
+
     if (!id) {
       return Response.json(
         { error: 'Submission ID is required' },
@@ -52,10 +54,12 @@ export async function DELETE(request, { params }) {
 
     const result = await deleteContactSubmission(id)
     
+    console.log('Delete result:', result)
+    
     if (!result.success) {
       return Response.json(
         { error: result.error },
-        { status: 500 }
+        { status: result.error === 'Submission not found' ? 404 : 500 }
       )
     }
 

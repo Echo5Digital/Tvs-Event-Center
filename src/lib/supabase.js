@@ -175,6 +175,28 @@ export async function deleteContactSubmission(id) {
       throw new Error('Supabase client not initialized')
     }
 
+    console.log('Attempting to delete submission with ID:', id)
+
+    // First check if the submission exists
+    const { data: existingSubmission, error: checkError } = await supabase
+      .from('contact_submissions')
+      .select('id')
+      .eq('id', id)
+      .single()
+
+    if (checkError) {
+      console.error('Error checking submission:', checkError)
+      if (checkError.code === 'PGRST116') {
+        return { success: false, error: 'Submission not found' }
+      }
+      throw checkError
+    }
+
+    if (!existingSubmission) {
+      return { success: false, error: 'Submission not found' }
+    }
+
+    // Now delete the submission
     const { data, error } = await supabase
       .from('contact_submissions')
       .delete()
@@ -182,14 +204,11 @@ export async function deleteContactSubmission(id) {
       .select()
 
     if (error) {
-      console.error('Supabase error:', error)
+      console.error('Supabase delete error:', error)
       throw error
     }
 
-    if (data.length === 0) {
-      throw new Error('Submission not found')
-    }
-
+    console.log('Delete successful:', data)
     return { success: true, data }
   } catch (error) {
     console.error('Error deleting submission:', error)

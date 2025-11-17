@@ -1,18 +1,19 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { getContactSubmissions, deleteContactSubmission } from '@/lib/supabase';
 
 // GET - Fetch all contact submissions for admin
 export async function GET() {
   try {
-    const contacts = await prisma.contact.findMany({
-      orderBy: {
-        createdAt: 'desc'
-      }
-    });
+    const result = await getContactSubmissions();
     
-    return NextResponse.json(contacts);
+    if (!result.success) {
+      return NextResponse.json(
+        { error: result.error },
+        { status: 500 }
+      );
+    }
+    
+    return NextResponse.json(result.data);
   } catch (error) {
     console.error('Error fetching contacts:', error);
     return NextResponse.json(
@@ -28,6 +29,8 @@ export async function DELETE(request) {
     const url = new URL(request.url);
     const id = url.searchParams.get('id');
     
+    console.log('DELETE request for contact ID:', id);
+    
     if (!id) {
       return NextResponse.json(
         { error: 'Contact ID is required' },
@@ -35,22 +38,16 @@ export async function DELETE(request) {
       );
     }
 
-    // Check if contact exists
-    const existingContact = await prisma.contact.findUnique({
-      where: { id: parseInt(id) }
-    });
-
-    if (!existingContact) {
+    const result = await deleteContactSubmission(id);
+    
+    console.log('Delete result:', result);
+    
+    if (!result.success) {
       return NextResponse.json(
-        { error: 'Contact not found' },
-        { status: 404 }
+        { error: result.error },
+        { status: result.error === 'Submission not found' ? 404 : 500 }
       );
     }
-
-    // Delete the contact
-    await prisma.contact.delete({
-      where: { id: parseInt(id) }
-    });
     
     return NextResponse.json(
       { message: 'Contact deleted successfully' },

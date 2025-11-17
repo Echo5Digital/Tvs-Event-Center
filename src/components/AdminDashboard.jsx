@@ -118,7 +118,7 @@ const AdminDashboard = () => {
     setDeleteLoading(prev => ({ ...prev, [submissionId]: true }))
 
     try {
-      const response = await fetch(`/api/admin/submissions/${submissionId}`, {
+      const response = await fetch(`/api/admin/contacts?id=${submissionId}`, {
         method: 'DELETE',
       })
 

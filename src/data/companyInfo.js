@@ -5,8 +5,8 @@ export const companyInfo = {
   
   // Contact Information
   contact: {
-    phone: "(346) 269-7713",
-    email: "info@tvseventcenter.com",
+    phone: "832-228-1066",
+    email: "tvseventcenter@gmail.com",
     contactPerson: "Timothy"
   },
   
@@ -51,7 +51,7 @@ export const companyInfo = {
   
   // Venue Details
   maxCapacity: "200+ Guests",
-  totalArea: "3,500 sq ft",
+  totalArea: "2000 sq ft",
   
   // Business Hours
   hours: {

@@ -73,7 +73,6 @@ test.describe('TV Event Center Website', () => {
       
       await expect(page.getByText('10+')).toBeVisible();
       await expect(page.getByText('1000+')).toBeVisible();
-      await expect(page.getByText('7,500')).toBeVisible();
       await expect(page.getByText('500+')).toBeVisible();
     });
   });

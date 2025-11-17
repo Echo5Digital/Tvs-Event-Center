@@ -130,11 +130,10 @@ export default function AboutPage() {
               description="Our commitment to excellence is reflected in every milestone we've achieved over the years."
             />
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-16">
               {[
                 { number: '10+', label: 'Years of Excellence', icon: Calendar },
                 { number: '1000+', label: 'Events Hosted', icon: Star },
-                { number: '7,500', label: 'Sq Ft of Space', icon: MapPin },
                 { number: '500+', label: 'Happy Couples', icon: Heart }
               ].map((stat, index) => (
                 <motion.div

@@ -189,46 +189,7 @@ const HeroSection = () => {
             </Link>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 pt-8 md:pt-16 border-t border-white/20 mx-4"
-          >
-            <div className="text-center">
-              <div className="text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2" style={{ color: '#d97b15' }}>
-                7,500
-              </div>
-              <div className="text-white/80 text-xs md:text-sm uppercase tracking-wide">
-                Sq Ft Space
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2" style={{ color: '#d97b15' }}>
-                1,000
-              </div>
-              <div className="text-white/80 text-xs md:text-sm uppercase tracking-wide">
-                Max Capacity
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2" style={{ color: '#d97b15' }}>
-                10+
-              </div>
-              <div className="text-white/80 text-xs md:text-sm uppercase tracking-wide">
-                Years Experience
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-xl md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2" style={{ color: '#d97b15' }}>
-                24/7
-              </div>
-              <div className="text-white/80 text-xs md:text-sm uppercase tracking-wide">
-                Event Support
-              </div>
-            </div>
-          </motion.div>
+
         </motion.div>
       </div>
 

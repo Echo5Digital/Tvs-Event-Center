@@ -86,7 +86,7 @@ const Navbar = () => {
             <div className="flex items-center space-x-2 text-sm">
               <Phone className="w-4 h-4" />
               <span className={isScrolled ? 'text-gray-700' : 'text-white'}>
-                (346) 269-7713
+                832-228-1066
               </span>
             </div>
             <Link
@@ -148,7 +148,7 @@ const Navbar = () => {
                 <div className="border-t border-gray-200 pt-4 space-y-3">
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Phone className="w-4 h-4" />
-                    <span>(346) 269-7713</span>
+                    <span>832-228-1066</span>
                   </div>
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Mail className="w-4 h-4" />

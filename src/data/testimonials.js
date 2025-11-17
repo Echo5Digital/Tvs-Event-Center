@@ -67,7 +67,7 @@ export const companyInfo = {
   description: 'TVS Event Center is a luxurious event venue where people can come together to celebrate The Gift of Life. Each guest will leave with a feeling of true celebration and cherishable memories.',
   established: '2015',
   location: 'Premium Location with Scenic Views',
-  totalArea: '7,500 sq ft',
+  totalArea: '2000 sq ft',
   maxCapacity: '1000 people',
   parking: '200+ vehicles',
   features: [
@@ -83,9 +83,9 @@ export const companyInfo = {
 }
 
 export const contactInfo = {
-  email: 'info@tveventcenter.com',
-  phone: '(346) 269-7713',
-  whatsapp: '(346) 269-7713', 
+  email: 'tvseventcenter@gmail.com',
+  phone: '832-228-1066',
+  whatsapp: '832-228-1066', 
   address: {
     street: '15511 Hwy 6 Suite A',
     city: 'Rosharon',

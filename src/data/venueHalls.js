@@ -47,7 +47,7 @@ export const venueHalls = [
     id: 'full-hall',
     name: 'Full Hall',
     capacity: '1000 people',
-    area: '7,500 sq ft',
+    area: '2000 sq ft',
     description: 'Our largest venue space that can accommodate up to 1000 people or host 3 individual functions simultaneously.',
     features: ['Maximum Capacity', 'Divisible Spaces', 'Multiple Stages', 'Full Kitchen', 'Ample Parking'],
     image: '/images/tvevent35.jpg',

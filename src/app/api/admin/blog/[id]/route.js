@@ -11,7 +11,7 @@ export async function GET(request, { params }) {
     const { id } = await params
     
     const { data: post, error } = await supabase
-      .from('blog_posts')
+      .from('blogs')
       .select('*')
       .eq('id', id)
       .single()
@@ -33,7 +33,7 @@ export async function PATCH(request, { params }) {
     const body = await request.json()
     
     const { data: post, error } = await supabase
-      .from('blog_posts')
+      .from('blogs')
       .update(body)
       .eq('id', id)
       .select()

@@ -155,37 +155,46 @@ const BlogManagement = () => {
   // Edit post
   const handleEdit = async (post) => {
     try {
+      console.log('Editing post:', post.id)
       const response = await fetch(`/api/admin/blog/${post.id}`)
+      
       if (response.ok) {
         const data = await response.json()
+        console.log('Fetched post data:', data)
+        
         setFormData({
           title: data.title || '',
           excerpt: data.excerpt || '',
           content: data.content || '',
           author: data.author || '',
-          authorRole: data.authorRole || '',
+          authorRole: data.authorRole || data.author_role || '',
           category: data.category || '',
-          tags: data.tags || [],
-          featuredImage: data.featuredImage || '',
-          images: data.images || [],
-          metaTitle: data.metaTitle || '',
-          metaDescription: data.metaDescription || '',
-          canonicalUrl: data.canonicalUrl || '',
-          ogTitle: data.ogTitle || '',
-          ogDescription: data.ogDescription || '',
-          ogImage: data.ogImage || '',
-          twitterTitle: data.twitterTitle || '',
-          twitterDescription: data.twitterDescription || '',
-          twitterImage: data.twitterImage || '',
-          jsonLd: data.jsonLd || '',
+          tags: Array.isArray(data.tags) ? data.tags : (data.tags ? data.tags.split(',').map(tag => tag.trim()) : []),
+          featuredImage: data.featuredImage || data.featured_image || '',
+          images: Array.isArray(data.images) ? data.images : [],
+          metaTitle: data.metaTitle || data.meta_title || '',
+          metaDescription: data.metaDescription || data.meta_description || '',
+          canonicalUrl: data.canonicalUrl || data.canonical_url || '',
+          ogTitle: data.ogTitle || data.og_title || '',
+          ogDescription: data.ogDescription || data.og_description || '',
+          ogImage: data.ogImage || data.og_image || '',
+          twitterTitle: data.twitterTitle || data.twitter_title || '',
+          twitterDescription: data.twitterDescription || data.twitter_description || '',
+          twitterImage: data.twitterImage || data.twitter_image || '',
+          jsonLd: data.jsonLd || data.json_ld || '',
           status: data.status || 'draft',
           featured: data.featured || false
         })
         setEditingPost(data)
         setShowForm(true)
+      } else {
+        const errorData = await response.json()
+        console.error('Failed to fetch post:', errorData)
+        alert(`Failed to load post for editing: ${errorData.error || 'Unknown error'}`)
       }
     } catch (error) {
       console.error('Error fetching post for edit:', error)
+      alert(`Error loading post for editing: ${error.message}`)
     }
   }
 

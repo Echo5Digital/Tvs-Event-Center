@@ -171,41 +171,43 @@ export async function getSubmissionStats() {
 // Helper function to delete a contact submission
 export async function deleteContactSubmission(id) {
   try {
-    if (!supabase) {
-      throw new Error('Supabase client not initialized')
-    }
-
-    console.log('Attempting to delete submission with ID:', id)
-
-    // First check if the submission exists
-    const { data: existingSubmission, error: checkError } = await supabase
-      .from('contact_submissions')
-      .select('id')
-      .eq('id', id)
-      .single()
-
-    if (checkError) {
-      console.error('Error checking submission:', checkError)
-      if (checkError.code === 'PGRST116') {
-        return { success: false, error: 'Submission not found' }
+    // Use admin client for delete operations to bypass RLS
+    const serviceKey = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY
+    
+    if (!serviceKey) {
+      console.warn('No service role key found, using regular client')
+      if (!supabase) {
+        throw new Error('Supabase client not initialized')
       }
-      throw checkError
+    }
+    
+    const adminSupabase = serviceKey 
+      ? createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, serviceKey)
+      : supabase
+    
+    if (!adminSupabase) {
+      throw new Error('Admin Supabase client not initialized')
     }
 
-    if (!existingSubmission) {
-      return { success: false, error: 'Submission not found' }
-    }
+    console.log('Attempting to delete submission with ID:', id, typeof id)
 
-    // Now delete the submission
-    const { data, error } = await supabase
+    // Try to delete directly without checking first
+    const { data, error, count } = await adminSupabase
       .from('contact_submissions')
       .delete()
       .eq('id', id)
       .select()
 
+    console.log('Delete operation result:', { data, error, count, affectedRows: data?.length })
+
     if (error) {
       console.error('Supabase delete error:', error)
-      throw error
+      return { success: false, error: error.message }
+    }
+
+    if (!data || data.length === 0) {
+      console.log('No rows affected - submission may not exist')
+      return { success: false, error: 'Submission not found or already deleted' }
     }
 
     console.log('Delete successful:', data)

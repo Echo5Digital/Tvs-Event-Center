@@ -123,11 +123,13 @@ const AdminDashboard = () => {
       })
 
       if (response.ok) {
-        // Remove the deleted submission from the state
+        // Remove the deleted submission from the state immediately
         setSubmissions(prev => prev.filter(submission => submission.id !== submissionId))
-        // Update stats
-        fetchData()
         alert('Contact submission deleted successfully!')
+        // Refresh data after a short delay to ensure consistency
+        setTimeout(() => {
+          fetchData()
+        }, 500)
       } else {
         const errorData = await response.json()
         throw new Error(errorData.error || 'Failed to delete submission')

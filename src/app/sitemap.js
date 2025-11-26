@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = 'https://tveventcenter.com'
+  const baseUrl = 'https://tvseventcenter.com'
   
   return [
     {

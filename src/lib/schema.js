@@ -4,10 +4,10 @@ export function generateLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': 'https://tveventcenter.com',
+    '@id': 'https://tvseventcenter.com',
     name: 'TV Event Center',
     description: companyInfo.description,
-    url: 'https://tveventcenter.com',
+    url: 'https://tvseventcenter.com',
     telephone: contactInfo.phone,
     email: contactInfo.email,
     address: {
@@ -64,8 +64,8 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     name: 'TV Event Center',
     description: companyInfo.description,
-    url: 'https://tveventcenter.com',
-    logo: 'https://tveventcenter.com/logo.png',
+    url: 'https://tvseventcenter.com',
+    logo: 'https://tvseventcenter.com/logo.png',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: contactInfo.phone,
@@ -111,7 +111,7 @@ export function generateEventSchema(event) {
     organizer: {
       '@type': 'Organization',
       name: 'TV Event Center',
-      url: 'https://tveventcenter.com'
+      url: 'https://tvseventcenter.com'
     }
   }
 }

@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://tveventcenter.com/sitemap.xml',
+    sitemap: 'https://tvseventcenter.com/sitemap.xml',
   }
 }
